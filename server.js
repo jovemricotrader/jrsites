@@ -10,16 +10,18 @@ app.use((req, res, next) => {
   next();
 });
 
-// Estáticos
 app.use(express.static(path.join(__dirname)));
 
-// Rotas /novoindicador
-app.get('/novoindicador',          (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-app.get('/novoindicador/',         (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-app.get('/novoindicador/obrigado', (req, res) => res.sendFile(path.join(__dirname, 'obrigado.html')));
+// Raiz → cap
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
-// Raiz → redireciona
-app.get('/', (req, res) => res.redirect(301, '/novoindicador'));
+// /obrigado → pg obrigado
+app.get('/obrigado', (req, res) => res.sendFile(path.join(__dirname, 'obrigado.html')));
+
+// Compatibilidade com path antigo /novoindicador
+app.get('/novoindicador', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/novoindicador/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/novoindicador/obrigado', (req, res) => res.sendFile(path.join(__dirname, 'obrigado.html')));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`JR Index rodando na porta ${PORT}`));
