@@ -26,6 +26,13 @@ fbq('init','410136588274309');fbq('track','PageView');fbq('track','ViewContent')
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@300;400;600&family=Share+Tech+Mono&display=swap" onload="this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@300;400;600&family=Share+Tech+Mono&display=swap"></noscript>
 <link rel="dns-prefetch" href="https://play.tynk.ai">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://api.vturb.com.br">
+<link rel="preload" href="https://scripts.converteai.net/7a2e4998-99f4-4bd7-80bc-2ba4199a25eb/players/69bdaa79b1f8e9f7f4f2a078/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
@@ -309,8 +316,8 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
 .sec-h .pu{color:var(--pu3)}.sec-h .gd{color:var(--g2)}
 .vsl-frame{border-radius:16px;overflow:hidden;border:1px solid rgba(124,58,237,.22);
   box-shadow:0 0 80px rgba(91,33,182,.18);background:#000;width:100%}
-.vsl-ratio{position:relative;width:100%;padding-top:56.25%}
-.vsl-ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.vsl-vturb{width:100%;display:block;line-height:0}
+.vsl-vturb vturb-smartplayer{display:block;width:100%}
 
 /* ── PILLARS ── */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.8vw,20px)}
@@ -601,11 +608,13 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
     </p>
   </div>
   <div class="vsl-frame reveal rd1">
-    <div class="vsl-ratio">
-      <iframe src="https://play.tynk.ai/p/8cdc84c6-28c9-4855-a204-f34788027dc1"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen loading="lazy" title="JR INDEX — Apresentação"
-        sandbox="allow-scripts allow-same-origin allow-presentation allow-popups"></iframe>
+    <div class="vsl-vturb">
+      <vturb-smartplayer id="vid-69bdaa79b1f8e9f7f4f2a078" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
+      <script type="text/javascript">
+        var s=document.createElement("script");
+        s.src="https://scripts.converteai.net/7a2e4998-99f4-4bd7-80bc-2ba4199a25eb/players/69bdaa79b1f8e9f7f4f2a078/v4/player.js";
+        s.async=!0;document.head.appendChild(s);
+      </script>
     </div>
   </div>
 </section>
