@@ -13,6 +13,7 @@
 <title>JR INDEX — O Único Aprovado no TradingView</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2304020F'/%3E%3Ctext x='16' y='22' font-family='Arial Black' font-size='14' font-weight='900' fill='%23F59E0B' text-anchor='middle'%3EJR%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://connect.facebook.net">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com https://llimages.com; frame-src https://play.tynk.ai; connect-src 'self' https://paginas.rocks; worker-src 'none'">
 <!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -38,7 +39,7 @@ fbq('init','410136588274309');fbq('track','PageView');fbq('track','ViewContent')
   --hh:60px;--pad:clamp(16px,5vw,64px);--max:1320px;
 }
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
-body{background:var(--bg);color:var(--w);font-family:'Barlow',sans-serif;overflow-x:hidden}
+body{background:var(--bg);color:var(--w);font-family:'Barlow',sans-serif;overflow-x:hidden;min-height:100svh}
 
 /* ── BG ── */
 .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
@@ -56,6 +57,11 @@ body{background:var(--bg);color:var(--w);font-family:'Barlow',sans-serif;overflo
 @keyframes adrift{0%{transform:translate(0,0)}100%{transform:translate(40px,30px)}}
 .scanlines{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.015;
   background:repeating-linear-gradient(0deg,transparent,transparent 2px,#000 2px,#000 4px)}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  #pts{display:none}
+  .scanlines{display:none}
+}
 #pts{position:fixed;inset:0;z-index:0;pointer-events:none}
 
 /* ── HEADER ── */
@@ -349,6 +355,16 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
 .mob-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;
   padding:10px 16px calc(10px + env(safe-area-inset-bottom));
   background:rgba(4,2,15,.96);backdrop-filter:blur(20px);border-top:1px solid rgba(124,58,237,.2)}
+
+/* ════════════════════════════════════════
+   LARGE (1001-1280px) — form wider
+════════════════════════════════════════ */
+@media(min-width:1001px) and (max-width:1280px){
+  .hero{grid-template-columns:minmax(0,34%) minmax(0,1fr) 260px;gap:clamp(10px,1.5vw,24px)}
+  .hero-h{font-size:clamp(32px,4vw,64px)}
+  .scene{height:min(500px,68vh)}
+  .ph-img{height:min(500px,68vh)}
+}
 
 /* ════════════════════════════════════════
    TABLET 761–1000px
