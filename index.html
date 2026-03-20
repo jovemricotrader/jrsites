@@ -116,10 +116,9 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
   display:grid;
   grid-template-columns:minmax(0,35%) minmax(0,1fr) 280px;
   grid-template-areas:"photo copy form";
-  align-items:center;
+  align-items:start;
   gap:clamp(10px,1.8vw,28px);
-  min-height:calc(100svh - var(--hh) - 36px);
-  padding:clamp(20px,3vh,40px) 0;
+  padding:clamp(32px,5vh,64px) 0;
 }
 
 /* ── FOTO COLUNA ── */
@@ -178,7 +177,7 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
   width:100%;
   height:min(520px,70vh);
   object-fit:cover;
-  object-position:center 8%; /* rosto + tronco */
+  object-position:center 20%; /* rosto centralizado */
   position:relative;z-index:3;
   mix-blend-mode:screen;
   filter:brightness(1.04) contrast(1.06) saturate(1.1)
@@ -210,7 +209,7 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
 @keyframes fttag{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 
 /* ── COPY COLUNA ── */
-.hero-copy{grid-area:copy;display:flex;flex-direction:column;justify-content:center}
+.hero-copy{grid-area:copy;display:flex;flex-direction:column;justify-content:flex-start;padding-top:clamp(8px,2vh,24px)}
 .htags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:clamp(12px,2vh,20px);
   opacity:0;animation:fup .5s ease .05s forwards}
 @keyframes fup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -256,7 +255,7 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
 #btag-more{display:none} /* hidden on desktop, shown on mobile */
 
 /* ── FORM COLUNA ── */
-.hero-form{grid-area:form;display:flex;flex-direction:column;justify-content:center;
+.hero-form{grid-area:form;display:flex;flex-direction:column;justify-content:flex-start;padding-top:clamp(8px,2vh,24px);
   opacity:0;animation:fup .7s ease .8s forwards}
 .fbox{background:rgba(91,33,182,.08);border:1px solid rgba(124,58,237,.24);
   border-radius:16px;padding:clamp(18px,2.6vh,26px);position:relative;overflow:hidden}
@@ -264,8 +263,8 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
   background:linear-gradient(90deg,transparent,var(--pu2) 35%,var(--g2) 65%,transparent);
   animation:lsh 4s ease-in-out infinite}
 @keyframes lsh{0%,100%{opacity:.4}50%{opacity:1}}
-.fbox-ttl{font-family:'Barlow Condensed',sans-serif;font-size:clamp(15px,1.6vw,20px);
-  font-weight:900;letter-spacing:.04em;margin-bottom:4px}
+.fbox-ttl{font-family:'Barlow Condensed',sans-serif;font-size:clamp(13px,1.3vw,17px);
+  font-weight:900;letter-spacing:.04em;margin-bottom:4px;line-height:1.1}
 .fbox-sub{font-family:var(--mono);font-size:clamp(9px,.85vw,10px);color:var(--gr2);
   letter-spacing:.1em;margin-bottom:clamp(12px,1.8vh,18px)}
 .inp{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);
@@ -295,7 +294,7 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
   text-align:center;margin-top:9px}
 
 /* ── STATS BAR ── */
-.stats-bar{display:flex;gap:2px;margin-top:clamp(14px,2.2vh,22px)}
+.stats-bar{display:flex;gap:2px;margin-top:clamp(10px,1.5vh,16px)}
 .sbar{flex:1;background:rgba(7,5,26,.8);border:1px solid rgba(124,58,237,.14);
   border-radius:10px;padding:clamp(12px,1.8vh,16px) clamp(10px,1.5vw,18px);text-align:center}
 .sbar-n{font-family:'Barlow Condensed',sans-serif;font-size:clamp(22px,2.5vw,34px);
@@ -303,13 +302,13 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
 .sbar-l{font-family:var(--mono);font-size:clamp(8px,.75vw,10px);color:var(--w3);letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
 
 /* ── VSL ── */
-.vsl-sec{padding:clamp(48px,7vh,80px) 0}
+.vsl-sec{padding:clamp(36px,5vh,60px) 0}
 .vsl-head{text-align:center;margin-bottom:clamp(24px,3.5vh,36px)}
 .sec-ey{font-family:var(--mono);font-size:clamp(9px,.9vw,11px);letter-spacing:.2em;color:var(--pu3);text-transform:uppercase;margin-bottom:10px;display:block}
-.sec-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,4.5vw,66px);font-weight:900;line-height:.88;letter-spacing:-.01em}
+.sec-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,3.8vw,56px);font-weight:900;line-height:.9;letter-spacing:-.01em}
 .sec-h .pu{color:var(--pu3)}.sec-h .gd{color:var(--g2)}
 .vsl-frame{border-radius:16px;overflow:hidden;border:1px solid rgba(124,58,237,.22);
-  box-shadow:0 0 80px rgba(91,33,182,.18);background:rgba(7,5,26,.95)}
+  box-shadow:0 0 80px rgba(91,33,182,.18);background:#000;width:100%}
 .vsl-ratio{position:relative;width:100%;padding-top:56.25%}
 .vsl-ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 
@@ -334,7 +333,7 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
 .p-body strong{color:var(--w);font-weight:600}
 
 /* ── BOTTOM CTA ── */
-.bcta{padding:clamp(56px,9vh,96px) var(--pad);text-align:center;position:relative;z-index:10}
+.bcta{padding:clamp(40px,6vh,72px) var(--pad);text-align:center;position:relative;z-index:10}
 .bcta::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(124,58,237,.28),transparent)}
 .bcta-tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:clamp(9px,.9vw,11px);letter-spacing:.16em;color:var(--rd2);text-transform:uppercase;margin-bottom:clamp(14px,2.2vh,22px);padding:5px 14px;border:1px solid rgba(239,68,68,.24);border-radius:3px;background:rgba(239,68,68,.06)}
 .bcta h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(46px,6.8vw,100px);font-weight:900;line-height:.84;letter-spacing:-.02em;margin-bottom:clamp(14px,2.2vh,22px)}
@@ -360,10 +359,10 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
    LARGE (1001-1280px) — form wider
 ════════════════════════════════════════ */
 @media(min-width:1001px) and (max-width:1280px){
-  .hero{grid-template-columns:minmax(0,34%) minmax(0,1fr) 260px;gap:clamp(10px,1.5vw,24px)}
+  .hero{grid-template-columns:minmax(0,34%) minmax(0,1fr) 260px;gap:clamp(10px,1.5vw,24px);align-items:start}
   .hero-h{font-size:clamp(32px,4vw,64px)}
-  .scene{height:min(500px,68vh)}
-  .ph-img{height:min(500px,68vh)}
+  .scene{height:min(520px,70vh)}
+  .ph-img{height:min(520px,70vh);object-position:center 20%}
 }
 
 /* ════════════════════════════════════════
@@ -381,7 +380,7 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
   }
   .hero-photo{align-self:stretch}
   .scene{height:min(480px,62vh)}
-  .ph-img{height:min(480px,62vh)}
+  .ph-img{height:min(480px,62vh);object-position:center 20%}
   .hero-h{font-size:clamp(28px,4.5vw,50px)}
   .hero-form{animation-delay:.5s}
   .ft2{display:none}
@@ -452,15 +451,17 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
   /* FORM: abaixo do copy */
   .hero-form{
     display:block;
-    padding:0 var(--pad) 24px;
+    padding:0 var(--pad) 20px;
     position:relative;z-index:2;
     background:var(--bg);
-    animation:none;opacity:1}
+    animation:none;opacity:1;margin-top:0}
   .fbox{border-radius:12px;padding:16px}
   .fbox-ttl{font-size:16px}
 
   /* STATS */
-  .stats-bar{flex-direction:column;gap:2px;margin-top:12px}
+  .stats-bar{flex-direction:row;gap:2px;margin-top:12px}
+  .sbar-n{font-size:clamp(20px,6vw,28px)}
+  .sbar-l{font-size:8px}
 
   /* SECTIONS */
   .pillars{grid-template-columns:1fr;gap:10px}
@@ -583,11 +584,11 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
 </section>
 </div><!-- /wrap -->
 
-<div class="sep"></div>
+<div class="sep" style="margin-top:0"></div>
 
 <!-- VSL -->
 <div class="wrap">
-<section class="vsl-sec" style="content-visibility:auto;contain-intrinsic-size:0 500px">
+<section class="vsl-sec">
   <div class="vsl-head reveal">
     <span class="sec-ey">assista antes de sair</span>
     <h2 class="sec-h" style="font-size:clamp(32px,5vw,70px);text-align:center">
@@ -614,8 +615,8 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
 
 <!-- 3 RAZÕES -->
 <div class="wrap">
-<section style="padding:clamp(44px,7vh,76px) 0;content-visibility:auto;contain-intrinsic-size:0 400px">
-  <div style="max-width:580px;margin-bottom:clamp(24px,4vh,40px)" class="reveal">
+<section style="padding:clamp(32px,5vh,56px) 0;content-visibility:auto;contain-intrinsic-size:0 400px">
+  <div style="max-width:720px;margin-bottom:clamp(20px,3.5vh,32px)" class="reveal">
     <div class="sec-ey">por que o jr index é diferente</div>
     <h2 class="sec-h">3 RAZÕES QUE<br><span class="pu">NENHUM CONCORRENTE</span> TEM</h2>
   </div>
