@@ -12,6 +12,7 @@
 <meta name="theme-color" content="#04020F">
 <title>JR INDEX — O Único Aprovado no TradingView</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2304020F'/%3E%3Ctext x='16' y='22' font-family='Arial Black' font-size='14' font-weight='900' fill='%23F59E0B' text-anchor='middle'%3EJR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://connect.facebook.net">
 <!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -127,8 +128,7 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
 .scene{
   position:relative;
   width:100%;
-  /* CRÍTICO: limita altura para não esticar a página */
-  max-height:min(600px,75vh);
+  height:min(600px,75vh); /* height fixo — max-height sozinho não basta */
   overflow:hidden;
   animation:phfl 9s ease-in-out infinite;
 }
@@ -168,7 +168,11 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
 
 /* FOTO — fundo preto desaparece com screen */
 .ph-img{
-  display:block;width:100%;
+  display:block;
+  width:100%;
+  height:min(600px,75vh); /* CRÍTICO: limita altura real da imagem */
+  object-fit:cover;
+  object-position:center 8%; /* rosto + tronco */
   position:relative;z-index:3;
   mix-blend-mode:screen;
   filter:brightness(1.04) contrast(1.06) saturate(1.1)
@@ -242,6 +246,8 @@ header{position:sticky;top:0;z-index:200;height:var(--hh);
 .btag:hover{background:rgba(124,58,237,.22)}
 .btag-more{font-family:var(--mono);font-size:9px;color:var(--w4);
   padding:3px 8px;border:1px dashed rgba(255,255,255,.08);border-radius:4px}
+#btag-more{display:none}
+#btag-more{display:none} /* hidden on desktop, shown on mobile */
 
 /* ── FORM COLUNA ── */
 .hero-form{grid-area:form;display:flex;flex-direction:column;justify-content:center;
@@ -416,7 +422,13 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
   .hero-h{font-size:clamp(34px,8.5vw,46px);margin-bottom:10px}
   .hero-sub{font-size:13px;line-height:1.72;margin-bottom:8px}
   .proof{font-size:9px;margin-bottom:8px}
-  .brokers{gap:4px}
+  .brokers{gap:4px;margin-bottom:10px}
+  .btag{display:none}
+  #btag-more{
+    display:block;width:100%;text-align:center;
+    color:var(--pu3);border:1px solid rgba(124,58,237,.25);
+    background:rgba(124,58,237,.08);font-size:10px;padding:7px 12px;
+    white-space:normal;line-height:1.6;border-radius:6px}
 
   /* FORM: abaixo do copy */
   .hero-form{
@@ -514,7 +526,7 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
       <span class="pu">rejeita cópia automaticamente.</span>
       O JR INDEX é o único de OB com <span class="gd">código original aprovado.</span>
     </p>
-    <div class="proof">APROVAÇÃO VERIFICADA · TRADINGVIEW · 2024</div>
+    <div class="proof">APROVAÇÃO VERIFICADA · TRADINGVIEW</div>
     <div class="brokers">
       <span class="btag">Quotex</span>
       <span class="btag">Pocket Option</span>
@@ -522,7 +534,7 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
       <span class="btag">Tourex</span>
       <span class="btag">Polarium</span>
       <span class="btag">Avalon</span>
-      <span class="btag-more">+ todas as OB</span>
+      <span class="btag-more" id="btag-more">Quotex · Pocket Option · Vera · Tourex · Polarium · Avalon · + todas as OB</span>
     </div>
     <div class="stats-bar reveal">
       <div class="sbar"><div class="sbar-n">+4.200</div><div class="sbar-l">Cadastrados</div></div>
@@ -556,7 +568,7 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
 
 <!-- VSL -->
 <div class="wrap">
-<section class="vsl-sec">
+<section class="vsl-sec" style="content-visibility:auto;contain-intrinsic-size:0 500px">
   <div class="vsl-head reveal">
     <span class="sec-ey">assista antes de sair</span>
     <h2 class="sec-h" style="font-size:clamp(32px,5vw,70px);text-align:center">
@@ -583,7 +595,7 @@ footer p{font-size:11px;color:var(--w4);letter-spacing:.04em;margin-bottom:3px}
 
 <!-- 3 RAZÕES -->
 <div class="wrap">
-<section style="padding:clamp(44px,7vh,76px) 0">
+<section style="padding:clamp(44px,7vh,76px) 0;content-visibility:auto;contain-intrinsic-size:0 400px">
   <div style="max-width:580px;margin-bottom:clamp(24px,4vh,40px)" class="reveal">
     <div class="sec-ey">por que o jr index é diferente</div>
     <h2 class="sec-h">3 RAZÕES QUE<br><span class="pu">NENHUM CONCORRENTE</span> TEM</h2>
