@@ -424,6 +424,12 @@ document.addEventListener('visibilitychange',function(){
     // Zapy — dispara em paralelo
     zapyEnviar(nome, email, telefone);
 
+    // Salva no sessionStorage para a pg obrigado usar no evento EntrarGrupo
+    try {
+      sessionStorage.setItem('jr_nome', nome);
+      sessionStorage.setItem('jr_tel', telefone.replace(/\D/g,''));
+    } catch(e){}
+
     setTimeout(function() { window.location.href = '/obrigado'; }, 900);
   };
 })();

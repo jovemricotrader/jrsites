@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<meta name="description" content="Cadastro confirmado! Complete os 3 passos para garantir seu acesso ao JR INDEX em 01/04.">
+<meta name="description" content="Cadastro confirmado! Complete os 3 passos para garantir seu acesso ao JR INDEX em 29/04.">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#030309">
 <title>Cadastro Confirmado — JR INDEX</title>
@@ -374,7 +374,7 @@ fbq('track','Lead');
   <h1>VOCÊ ESTÁ<br><span class="gr">CADASTRADO.</span><br><span class="pu">AGORA FAZ ISSO.</span></h1>
   <p class="success-sub">
     Complete os 3 passos abaixo pra garantir que você
-    <strong>não perde o lançamento</strong> no dia 01/04.
+    <strong>não perde o lançamento</strong> no dia 29/04.
   </p>
 </section>
 
@@ -529,7 +529,7 @@ fbq('track','Lead');
       <div class="sc-content">
         <p class="sc-body">
           O lançamento vai rolar <strong>ao vivo no grupo do WhatsApp</strong>.
-          É lá que você acompanha tudo no dia 01/04 e recebe as instruções de ativação.
+          É lá que você acompanha tudo no dia 29/04 e recebe as instruções de ativação.
         </p>
         <a class="confirm-btn cb-zap" href="https://devzapp.com.br/api-engennier/campanha/api/redirect/67afa5e33a35eb00016e97ff"
           target="_blank" rel="noopener noreferrer"
@@ -543,7 +543,7 @@ fbq('track','Lead');
         <div class="done-banner" id="done-banner">
           <div class="done-banner-t">🎉 VOCÊ COMPLETOU TUDO!</div>
           <p class="done-banner-p">
-            Agora é só aguardar o dia <strong>01 de Abril</strong>.
+            Agora é só aguardar o dia <strong>29 de Abril</strong>.
             Fique de olho no <strong>grupo do WhatsApp e no e-mail</strong> — você vai receber tudo por lá.
           </p>
         </div>
@@ -556,7 +556,7 @@ fbq('track','Lead');
         <div class="launch-box" style="margin-top:20px">
           <div class="launch-inner">
             <div>
-              <div class="launch-t">⚡ LANÇAMENTO 01/04</div>
+              <div class="launch-t">⚡ LANÇAMENTO 29/04</div>
               <p class="launch-p">Fique de olho no <strong>grupo e no e-mail</strong>. No dia você recebe as instruções completas para ativar seu JR INDEX.</p>
             </div>
             <div class="launch-cal">
@@ -601,6 +601,12 @@ fbq('track','Lead');
 const TOTAL_STEPS = 3;
 let currentStep = 1;
 
+// Recupera dados do lead salvos na pg de captura
+try {
+  window._zapyNome = sessionStorage.getItem('jr_nome') || '';
+  window._zapyTel  = sessionStorage.getItem('jr_tel')  || '';
+} catch(e) { window._zapyNome=''; window._zapyTel=''; }
+
 function completeStep(n) {
   if (n !== currentStep) return;
 
@@ -626,6 +632,26 @@ function completeStep(n) {
     if (banner) banner.classList.add('show');
     const hint = document.getElementById('hint3');
     if (hint) hint.style.display = 'none';
+
+    // ── Facebook Pixel — evento "EntrarGrupo" (otimização de campanha)
+    if (typeof fbq === 'function') {
+      fbq('trackCustom', 'EntrarGrupo');
+      fbq('track', 'CompleteRegistration');
+    }
+
+    // ── Zapy — dispara evento de engajamento (grupo) se tiver webhook configurado
+    var ZAPY_URL = window.ZAPY_WEBHOOK || '';
+    if (ZAPY_URL && ZAPY_URL !== 'ZAPY_WEBHOOK_URL') {
+      var tel = window._zapyTel || '';
+      if (tel) {
+        fetch(ZAPY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ telefone: tel, evento: 'entrou_grupo', nome: window._zapyNome || '' }),
+          keepalive: true
+        }).catch(function(){});
+      }
+    }
     return;
   }
 
