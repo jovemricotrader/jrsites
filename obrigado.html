@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<meta name="description" content="Cadastro confirmado! Complete os 3 passos para garantir seu acesso ao JR INDEX em 01/04.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#030309">
+<title>Cadastro Confirmado — JR INDEX</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23030309'/%3E%3Ctext x='16' y='22' font-family='Arial Black' font-size='14' font-weight='900' fill='%23F59E0B' text-anchor='middle'%3EJR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#030309;--bg2:#07071A;--bg3:#0D0D24;
+  --pu:#5B21B6;--pu2:#7C3AED;--pu3:#A78BFA;--pu4:#EDE9FE;
+  --g:#B45309;--g2:#F59E0B;--g3:#FCD34D;
+  --w:#F4F3FF;--w2:#B8B0D8;--w3:#5C527A;--w4:#221E3A;
+  --gr:#047857;--gr2:#10B981;--gr3:#6EE7B7;
+  --zap:#25D366;
+  --ig1:#F58529;--ig2:#DD2A7B;--ig3:#8134AF;
+  --mono:'Share Tech Mono',monospace;
+}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--w);font-family:'Barlow',sans-serif;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(5,150,105,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(5,150,105,.025) 1px,transparent 1px);
+  background-size:72px 72px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%)}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+.atm1{position:fixed;width:min(900px,150vw);height:min(900px,150vw);top:-28%;left:-18%;
+  background:radial-gradient(circle,rgba(5,150,105,.1) 0%,transparent 62%);
+  border-radius:50%;pointer-events:none;z-index:0;filter:blur(1px)}
+.atm2{position:fixed;width:min(800px,140vw);height:min(800px,140vw);bottom:-22%;right:-16%;
+  background:radial-gradient(circle,rgba(91,33,182,.13) 0%,transparent 62%);
+  border-radius:50%;pointer-events:none;z-index:0;filter:blur(1px)}
+#pts{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:200;
+  background:rgba(3,3,9,.88);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);
+  border-bottom:1px solid rgba(16,185,129,.1)}
+.hdr{display:flex;align-items:center;justify-content:space-between;
+  max-width:900px;margin:0 auto;padding:13px clamp(16px,5vw,48px)}
+.logo{font-family:'Barlow Condensed',sans-serif;font-size:clamp(18px,2.2vw,22px);
+  font-weight:900;letter-spacing:.14em;color:var(--g2);
+  display:flex;align-items:center;gap:9px}
+.logo-dot{width:7px;height:7px;background:var(--gr2);border-radius:50%;
+  box-shadow:0 0 9px var(--gr2);animation:ld 1.6s ease infinite}
+@keyframes ld{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+.conf-badge{display:flex;align-items:center;gap:6px;padding:5px 12px;
+  border:1px solid rgba(16,185,129,.28);border-radius:3px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(10px,1.2vw,12px);font-weight:700;letter-spacing:.14em;color:var(--gr2)}
+.cb-dot{width:5px;height:5px;background:var(--gr2);border-radius:50%;animation:ld 1.2s infinite}
+
+/* WRAP */
+.wrap{position:relative;z-index:10;max-width:900px;margin:0 auto;padding:0 clamp(16px,5vw,48px)}
+
+/* SUCCESS HERO */
+.success{text-align:center;padding:clamp(40px,6vh,64px) 0 clamp(20px,3.5vh,36px)}
+.check-ring{
+  width:clamp(70px,8vw,90px);height:clamp(70px,8vw,90px);
+  background:rgba(16,185,129,.08);border:2px solid rgba(16,185,129,.32);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto clamp(14px,2.5vh,22px);
+  box-shadow:0 0 60px rgba(16,185,129,.16);
+  animation:pop .7s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pop{from{transform:scale(0) rotate(-15deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+.check-ring svg path{stroke-dasharray:50;stroke-dashoffset:50;animation:draw .5s ease .55s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.c-tag{display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:clamp(9px,1vw,11px);
+  letter-spacing:.18em;color:var(--gr3);text-transform:uppercase;
+  padding:5px 16px;border:1px solid rgba(16,185,129,.22);border-radius:3px;
+  background:rgba(16,185,129,.05);margin-bottom:clamp(12px,2vh,18px);
+  animation:fup .5s ease .2s both}
+@keyframes fup{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+.success h1{font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(38px,6.5vw,86px);font-weight:900;
+  letter-spacing:-.01em;line-height:.85;margin-bottom:clamp(12px,2.2vh,18px);
+  animation:fup .6s ease .28s both}
+.success h1 .gr{color:var(--gr2);text-shadow:0 0 50px rgba(16,185,129,.3)}
+.success h1 .pu{color:var(--pu3)}
+.success-sub{font-size:clamp(14px,1.35vw,17px);color:var(--w2);font-weight:300;
+  line-height:1.75;max-width:520px;margin:0 auto;animation:fup .6s ease .4s both}
+.success-sub strong{color:var(--w)}
+
+/* PROGRESS BAR */
+.progress-wrap{margin:clamp(28px,4.5vh,44px) 0 clamp(20px,3.5vh,32px);
+  animation:fup .5s ease .5s both}
+.progress-bar-labels{display:flex;justify-content:space-between;margin-bottom:10px}
+.pbl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--w4);
+  text-transform:uppercase;transition:color .4s}
+.pbl.done{color:var(--gr2)}.pbl.active{color:var(--pu3)}
+.progress-track{height:3px;background:var(--w4);border-radius:2px;position:relative;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gr2),var(--pu3),var(--g2));
+  border-radius:2px;transition:width .8s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 10px rgba(16,185,129,.4)}
+
+/* STEP CARDS */
+.steps-stack{display:flex;flex-direction:column;gap:clamp(14px,2.2vh,20px);
+  padding-bottom:clamp(40px,7vh,60px)}
+
+/* BASE CARD */
+.scard{border-radius:clamp(14px,1.8vw,18px);position:relative;overflow:hidden;
+  transition:border-color .4s,opacity .4s,transform .4s,box-shadow .4s}
+
+/* LOCKED */
+.scard.locked{
+  background:rgba(7,7,26,.5);border:1px solid rgba(255,255,255,.05);
+  opacity:.42;pointer-events:none;transform:scale(.99);filter:blur(.4px)}
+.scard.locked::after{content:'🔒';position:absolute;top:50%;right:24px;
+  transform:translateY(-50%);font-size:20px;opacity:.4}
+
+/* ACTIVE */
+.scard.active{
+  background:rgba(7,7,26,.92);
+  border:1px solid rgba(124,58,237,.22);
+  box-shadow:0 0 40px rgba(91,33,182,.08);}
+.scard.active::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+
+/* DONE */
+.scard.done{
+  background:rgba(5,150,105,.06);
+  border:1px solid rgba(16,185,129,.2);}
+.scard.done::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gr2),transparent)}
+
+/* COLOR THEMES */
+.s1.active::before{background:linear-gradient(90deg,transparent,var(--gr2),transparent)}
+.s1.active{border-color:rgba(16,185,129,.25)}
+.s2.active::before{background:linear-gradient(90deg,transparent,#DD2A7B,transparent)}
+.s2.active{border-color:rgba(221,42,123,.22)}
+.s3.active::before{background:linear-gradient(90deg,transparent,var(--zap),transparent)}
+.s3.active{border-color:rgba(37,211,102,.22)}
+
+/* CARD INNER */
+.sc-inner{padding:clamp(22px,3.2vh,30px) clamp(18px,2.8vw,28px)}
+.sc-top{display:flex;align-items:center;gap:14px;margin-bottom:clamp(16px,2.5vh,22px)}
+.sc-num-badge{
+  width:clamp(36px,4vw,44px);height:clamp(36px,4vw,44px);flex-shrink:0;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow Condensed',sans-serif;font-size:clamp(16px,2vw,20px);font-weight:900}
+.s1 .sc-num-badge{background:rgba(16,185,129,.12);border:1.5px solid rgba(16,185,129,.3);color:var(--gr2)}
+.s2 .sc-num-badge{background:rgba(221,42,123,.1);border:1.5px solid rgba(221,42,123,.28);color:#DD2A7B}
+.s3 .sc-num-badge{background:rgba(37,211,102,.1);border:1.5px solid rgba(37,211,102,.28);color:var(--zap)}
+.scard.done .sc-num-badge{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.4);color:var(--gr2)}
+.sc-head{flex:1}
+.sc-step-lbl{font-family:var(--mono);font-size:clamp(8px,.85vw,10px);
+  letter-spacing:.16em;text-transform:uppercase;margin-bottom:3px}
+.s1 .sc-step-lbl{color:var(--gr3)}
+.s2 .sc-step-lbl{color:#F09040}
+.s3 .sc-step-lbl{color:#86EFAC}
+.scard.locked .sc-step-lbl{color:var(--w4)}
+.sc-title{font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(18px,2.2vw,24px);font-weight:900;letter-spacing:.02em;line-height:1}
+.s1 .sc-title{color:var(--gr3)}
+.s2 .sc-title{background:linear-gradient(135deg,var(--ig1),var(--ig2),var(--ig3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.s3 .sc-title{color:#86EFAC}
+.scard.locked .sc-title{color:var(--w3);-webkit-text-fill-color:var(--w3)}
+.scard.done .sc-title{color:var(--gr3);-webkit-text-fill-color:var(--gr3)}
+
+/* DONE CHECK */
+.done-check{display:none;font-size:22px}
+.scard.done .done-check{display:block}
+.scard.done .sc-content{display:none}
+
+/* CONTENT */
+.sc-body{font-size:clamp(13px,1.15vw,15px);color:var(--w3);line-height:1.75;
+  margin-bottom:clamp(16px,2.5vh,22px)}
+.sc-body strong{color:var(--w2)}
+
+/* EMAIL TABS */
+.etabs{margin-bottom:clamp(16px,2.5vh,22px)}
+.etab-btns{display:flex;gap:6px;margin-bottom:10px}
+.etab-btn{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 12px;border-radius:4px;border:1px solid var(--w4);
+  background:transparent;color:var(--w3);cursor:pointer;transition:all .16s}
+.etab-btn.on{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.32);color:var(--gr3)}
+.etab-pane{display:none;background:rgba(0,0,0,.3);border-radius:8px;
+  padding:12px 14px;border:1px solid rgba(255,255,255,.05)}
+.etab-pane.on{display:block}
+.estep{display:flex;align-items:flex-start;gap:8px;font-size:clamp(11px,.98vw,13px);
+  color:var(--w3);line-height:1.6;margin-bottom:7px}
+.estep:last-child{margin-bottom:0}
+.esn{width:16px;height:16px;border-radius:50%;flex-shrink:0;
+  background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;font-weight:800;color:var(--gr3);margin-top:2px}
+.estep strong{color:var(--w2)}
+
+/* PHONE MOCKUP */
+.phone-row{display:flex;align-items:flex-start;gap:clamp(16px,3vw,28px);margin-bottom:clamp(16px,2.5vh,22px)}
+@media(max-width:600px){.phone-row{flex-direction:column;align-items:center}}
+.phone{width:clamp(150px,16vw,190px);flex-shrink:0;background:#0A0A1A;border-radius:24px;
+  border:2px solid rgba(255,255,255,.09);overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);
+  transform:rotateY(-6deg) rotateX(3deg);transition:transform .4s ease;
+  animation:phoneIn .8s cubic-bezier(.34,1.56,.64,1) .3s both}
+.phone:hover{transform:rotateY(0) rotateX(0)}
+@keyframes phoneIn{from{opacity:0;transform:rotateY(-18deg) rotateX(8deg) translateY(16px)}to{opacity:1;transform:rotateY(-6deg) rotateX(3deg) translateY(0)}}
+.phone-bar{height:24px;background:#111;display:flex;align-items:center;justify-content:space-between;
+  padding:0 12px;border-bottom:1px solid rgba(255,255,255,.05)}
+.phone-bar span{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.35)}
+.ig-hdr{padding:8px 10px 6px;border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:space-between}
+.ig-logo{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;
+  background:linear-gradient(90deg,var(--ig1),var(--ig2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ig-profile{padding:8px 10px}
+.ig-pfp-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ig-pfp{width:32px;height:32px;border-radius:50%;overflow:hidden;flex-shrink:0;
+  border:2px solid transparent;
+  background:linear-gradient(var(--bg),var(--bg)) padding-box,
+    linear-gradient(135deg,var(--ig1),var(--ig2),var(--ig3)) border-box}
+.ig-pfp img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.ig-name{font-size:10px;font-weight:700;color:var(--w)}
+.ig-handle{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.38)}
+.ig-follow-btn{font-size:8px;font-weight:700;padding:4px 9px;border-radius:5px;
+  background:linear-gradient(135deg,var(--ig1),var(--ig2),var(--ig3));
+  border:none;color:#fff;cursor:pointer;font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:.04em;transition:transform .15s,opacity .2s;flex-shrink:0}
+.ig-follow-btn:hover{transform:scale(1.05)}
+.ig-follow-btn.following{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:var(--w3)}
+.ig-stats{display:flex;gap:10px;margin-bottom:5px}
+.ig-sn{font-size:9px;font-weight:700;color:var(--w);text-align:center}
+.ig-sl{font-family:var(--mono);font-size:6px;color:rgba(255,255,255,.3);text-align:center}
+.ig-bio{font-size:7px;color:rgba(255,255,255,.45);line-height:1.4;margin-bottom:5px}
+.ig-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.05)}
+.ig-post{aspect-ratio:1;background:rgba(255,255,255,.04);
+  display:flex;align-items:center;justify-content:center;font-size:12px;opacity:.5}
+.phone-steps{flex:1}
+.ps-row{display:flex;align-items:flex-start;gap:8px;font-size:clamp(12px,1.08vw,14px);
+  color:var(--w3);line-height:1.65;margin-bottom:10px}
+.ps-row:last-child{margin-bottom:0}
+.psn{width:18px;height:18px;border-radius:50%;flex-shrink:0;
+  background:rgba(221,42,123,.1);border:1px solid rgba(221,42,123,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;font-weight:800;color:#DD2A7B;margin-top:1px}
+.ps-row strong{color:var(--w2)}
+
+/* CONFIRM BUTTONS */
+.confirm-btn{
+  width:100%;padding:clamp(13px,1.8vh,17px);
+  border:none;border-radius:10px;cursor:pointer;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(15px,1.8vw,19px);font-weight:900;letter-spacing:.07em;
+  color:#fff;position:relative;overflow:hidden;
+  transition:transform .15s,box-shadow .2s,background .3s}
+.confirm-btn:hover{transform:translateY(-2px)}
+.confirm-btn:active{transform:translateY(1px)}
+.confirm-btn::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.1) 50%,transparent 65%);
+  transform:translateX(-100%);transition:transform .4s}
+.confirm-btn:hover::after{transform:translateX(100%)}
+
+/* BUTTON COLORS */
+.cb-green{background:linear-gradient(135deg,var(--gr),var(--gr2));
+  box-shadow:0 6px 24px rgba(5,150,105,.4)}
+.cb-green:hover{box-shadow:0 10px 34px rgba(5,150,105,.55)}
+.cb-ig{background:linear-gradient(135deg,var(--ig1),var(--ig2),var(--ig3));
+  box-shadow:0 6px 24px rgba(221,42,123,.35)}
+.cb-ig:hover{box-shadow:0 10px 34px rgba(221,42,123,.5)}
+.cb-zap{background:linear-gradient(135deg,#128C7E,var(--zap));
+  box-shadow:0 6px 24px rgba(37,211,102,.35)}
+.cb-zap:hover{box-shadow:0 10px 34px rgba(37,211,102,.5)}
+
+/* UNLOCK INDICATOR */
+.unlock-hint{display:flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10px;color:var(--w4);letter-spacing:.1em;
+  margin-top:clamp(10px,1.8vh,14px);justify-content:center}
+.unlock-arrow{animation:bounce 1.4s ease infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* DONE BANNER */
+.done-banner{
+  display:none;padding:clamp(16px,2.5vh,22px) clamp(18px,2.8vw,24px);
+  background:rgba(5,150,105,.08);border:1px solid rgba(16,185,129,.2);
+  border-radius:12px;text-align:center;margin-top:16px}
+.done-banner.show{display:block;animation:fup .5s ease both}
+.done-banner-t{font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(18px,2.2vw,24px);font-weight:900;color:var(--gr3);margin-bottom:6px}
+.done-banner-p{font-size:clamp(12px,1.1vw,14px);color:var(--w3);line-height:1.7}
+.done-banner-p strong{color:var(--w2)}
+
+/* FINAL LAUNCH */
+.launch-box{background:rgba(180,83,9,.07);border:1px solid rgba(245,158,11,.16);
+  border-radius:clamp(14px,2vw,18px);
+  padding:clamp(22px,3.5vh,32px) clamp(20px,3vw,30px);
+  position:relative;overflow:hidden;
+  margin:clamp(20px,3.5vh,32px) 0 clamp(36px,6vh,52px)}
+.launch-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--g2),transparent)}
+.launch-inner{display:grid;grid-template-columns:1fr auto;gap:clamp(14px,3vw,24px);align-items:center}
+@media(max-width:520px){.launch-inner{grid-template-columns:1fr}}
+.launch-t{font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(18px,2.5vw,28px);font-weight:900;color:var(--g2);margin-bottom:8px}
+.launch-p{font-size:clamp(12px,1.1vw,14px);color:var(--w2);line-height:1.75;font-weight:300}
+.launch-p strong{color:var(--w)}
+.launch-cal{text-align:center;flex-shrink:0;
+  background:rgba(245,158,11,.09);border:1px solid rgba(245,158,11,.2);
+  border-radius:10px;padding:clamp(12px,2vh,18px) clamp(14px,2.5vw,22px)}
+.launch-cal-d{font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(28px,4vw,48px);font-weight:900;color:var(--g2);line-height:1}
+.launch-cal-m{font-family:var(--mono);font-size:10px;color:var(--g3);
+  letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+.cd-ob{font-family:var(--mono);font-size:10px;color:var(--w3);margin-top:4px}
+
+/* STRIP */
+.strip{display:grid;grid-template-columns:auto 1fr;align-items:center;
+  gap:clamp(20px,4vw,44px);padding:clamp(28px,4.5vh,44px) 0;
+  border-top:1px solid rgba(124,58,237,.09)}
+@media(max-width:560px){
+  .strip{grid-template-columns:1fr;text-align:center}
+  .strip-img{width:min(160px,45vw);margin:0 auto}}
+.strip-img{width:clamp(110px,13vw,200px);
+  filter:drop-shadow(0 12px 32px rgba(91,33,182,.32))}
+.strip-ey{font-family:var(--mono);font-size:clamp(9px,.95vw,11px);
+  letter-spacing:.18em;color:var(--pu3);text-transform:uppercase;margin-bottom:12px}
+.strip-h{font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(24px,4vw,50px);font-weight:900;letter-spacing:-.01em;
+  line-height:.87;margin-bottom:12px}
+.strip-h span{color:var(--pu3)}
+.strip-p{font-size:clamp(12px,1.1vw,14px);color:var(--w2);line-height:1.8;font-weight:300}
+.strip-p strong{color:var(--w)}
+
+footer{border-top:1px solid rgba(124,58,237,.07);
+  padding:clamp(18px,3vh,26px) clamp(16px,5vw,48px);text-align:center}
+.foot-logo{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;
+  letter-spacing:.12em;color:var(--g2);margin-bottom:7px;
+  display:inline-flex;align-items:center;gap:8px}
+footer p{font-size:11px;color:var(--w3);line-height:1.85;font-family:var(--mono)}
+
+/* ANIMATE IN */
+@keyframes slideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.step-unlock-anim{animation:slideIn .5s cubic-bezier(.22,1,.36,1) both}
+</style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','410136588274309');
+fbq('track','PageView');
+fbq('track','ViewContent');
+fbq('track','Lead');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=410136588274309&ev=PageView&noscript=1"></noscript>
+<!-- End Meta Pixel -->
+</head>
+<body>
+<div class="atm1"></div><div class="atm2"></div>
+<canvas id="pts"></canvas>
+
+<header>
+  <div class="hdr">
+    <div class="logo"><span class="logo-dot"></span>JR INDEX</div>
+    <div class="conf-badge"><span class="cb-dot"></span>CADASTRO CONFIRMADO</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- HERO -->
+<section class="success">
+  <div class="check-ring">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <path d="M7 16L13 22L25 10" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="c-tag">✓ &nbsp;VOCÊ ESTÁ DENTRO</div>
+  <h1>VOCÊ ESTÁ<br><span class="gr">CADASTRADO.</span><br><span class="pu">AGORA FAZ ISSO.</span></h1>
+  <p class="success-sub">
+    Complete os 3 passos abaixo pra garantir que você
+    <strong>não perde o lançamento</strong> no dia 01/04.
+  </p>
+</section>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-bar-labels">
+    <span class="pbl active" id="lbl1">E-MAIL</span>
+    <span class="pbl" id="lbl2">INSTAGRAM</span>
+    <span class="pbl" id="lbl3">WHATSAPP</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="prog-fill"></div>
+  </div>
+</div>
+
+<!-- STEPS STACK -->
+<div class="steps-stack">
+
+  <!-- ═══ STEP 1: EMAIL ═══ -->
+  <div class="scard s1 active" id="card1">
+    <div class="sc-inner">
+      <div class="sc-top">
+        <div class="sc-num-badge" id="badge1">1</div>
+        <div class="sc-head">
+          <div class="sc-step-lbl">PASSO 01 — FAÇA AGORA</div>
+          <div class="sc-title">SALVA O E-MAIL</div>
+        </div>
+        <div class="done-check">✅</div>
+      </div>
+      <div class="sc-content">
+        <p class="sc-body">
+          Adiciona nosso e-mail nos seus contatos.
+          <strong>Sem isso o aviso do lançamento cai no spam</strong> e você perde tudo.
+        </p>
+        <div class="etabs">
+          <div class="etab-btns">
+            <button class="etab-btn on" onclick="tab(this,'gm')">Gmail</button>
+            <button class="etab-btn" onclick="tab(this,'ol')">Outlook</button>
+            <button class="etab-btn" onclick="tab(this,'hm')">Hotmail</button>
+          </div>
+          <div class="etab-pane on" id="tab-gm">
+            <div class="estep"><span class="esn">1</span><span>Abre o e-mail que recebeu, clica nos <strong>3 pontinhos ⋮</strong></span></div>
+            <div class="estep"><span class="esn">2</span><span>Clica em <strong>"Adicionar aos contatos"</strong></span></div>
+            <div class="estep"><span class="esn">3</span><span>Pronto — próximos e-mails vão direto na caixa principal</span></div>
+          </div>
+          <div class="etab-pane" id="tab-ol">
+            <div class="estep"><span class="esn">1</span><span>Abre o e-mail e clica no <strong>nome do remetente</strong></span></div>
+            <div class="estep"><span class="esn">2</span><span>Seleciona <strong>"Adicionar ao People"</strong></span></div>
+            <div class="estep"><span class="esn">3</span><span>Pronto — nunca mais cai no lixo eletrônico</span></div>
+          </div>
+          <div class="etab-pane" id="tab-hm">
+            <div class="estep"><span class="esn">1</span><span>Abre o e-mail e clica no <strong>nome do remetente</strong></span></div>
+            <div class="estep"><span class="esn">2</span><span>Clica em <strong>"Adicionar à lista de remetentes seguros"</strong></span></div>
+            <div class="estep"><span class="esn">3</span><span>Pronto — e-mails sempre na caixa principal</span></div>
+          </div>
+        </div>
+        <button class="confirm-btn cb-green" onclick="completeStep(1)">
+          ✅ JÁ SALVEI O E-MAIL — PRÓXIMO PASSO
+        </button>
+        <div class="unlock-hint"><span class="unlock-arrow">↓</span> Complete para desbloquear o Passo 2</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 2: INSTAGRAM ═══ -->
+  <div class="scard s2 locked" id="card2">
+    <div class="sc-inner">
+      <div class="sc-top">
+        <div class="sc-num-badge" id="badge2">2</div>
+        <div class="sc-head">
+          <div class="sc-step-lbl">PASSO 02 — DESBLOQUEIE O PASSO 1</div>
+          <div class="sc-title">SEGUE O INSTAGRAM</div>
+        </div>
+        <div class="done-check">✅</div>
+      </div>
+      <div class="sc-content">
+        <p class="sc-body">
+          Ativa as notificações do <strong>@jovemricotrader2</strong>.
+          Conteúdo exclusivo e avisos do lançamento vão sair por lá primeiro.
+        </p>
+        <div class="phone-row">
+          <div class="phone" id="phone">
+            <div class="phone-bar"><span>9:41</span><span>◼◼◼</span></div>
+            <div class="ig-hdr">
+              <div class="ig-logo">Instagram</div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="ig-profile">
+              <div class="ig-pfp-row">
+                <div class="ig-pfp">
+                  <img src="/foto.png" alt="JR" loading="lazy">
+                </div>
+                <div style="flex:1;min-width:0">
+                  <div class="ig-name">Jovem Rico Trader</div>
+                  <div class="ig-handle">@jovemricotrader2</div>
+                </div>
+                <button class="ig-follow-btn" id="ig-btn" onclick="igFollow()">Seguir</button>
+              </div>
+              <div class="ig-stats">
+                <div><div class="ig-sn">847</div><div class="ig-sl">posts</div></div>
+                <div><div class="ig-sn">42k</div><div class="ig-sl">seguidores</div></div>
+                <div><div class="ig-sn">312</div><div class="ig-sl">seguindo</div></div>
+              </div>
+              <div class="ig-bio">📊 JR INDEX · TradingView aprovado</div>
+              <div class="ig-grid">
+                <div class="ig-post">📈</div>
+                <div class="ig-post">💹</div>
+                <div class="ig-post">🎯</div>
+                <div class="ig-post">📊</div>
+                <div class="ig-post">⚡</div>
+                <div class="ig-post">🔥</div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-steps">
+            <div class="ps-row"><span class="psn">1</span><span>Acesse <strong>@jovemricotrader2</strong> e clique em <strong>Seguir</strong></span></div>
+            <div class="ps-row"><span class="psn">2</span><span>Clica no <strong>sino 🔔</strong> e ativa <strong>"Publicações"</strong></span></div>
+            <div class="ps-row"><span class="psn">3</span><span>Pronto — você vê os avisos antes de todo mundo</span></div>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/jovemricotrader2" target="_blank" rel="noopener noreferrer"
+          style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+            margin-bottom:10px;padding:clamp(12px,1.8vh,16px);
+            background:linear-gradient(135deg,var(--ig1),var(--ig2),var(--ig3));
+            border-radius:9px;text-decoration:none;
+            font-family:'Barlow Condensed',sans-serif;font-size:clamp(14px,1.7vw,17px);
+            font-weight:900;letter-spacing:.06em;color:#fff;
+            box-shadow:0 6px 22px rgba(221,42,123,.3);transition:transform .15s"
+          onmouseover="this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.transform='translateY(0)'">
+          📸 ABRIR INSTAGRAM — @jovemricotrader2
+        </a>
+        <button class="confirm-btn cb-ig" onclick="completeStep(2)">
+          ✅ JÁ SEGUI E ATIVEI AS NOTIFICAÇÕES
+        </button>
+        <div class="unlock-hint"><span class="unlock-arrow">↓</span> Complete para desbloquear o Passo 3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 3: WHATSAPP ═══ -->
+  <div class="scard s3 locked" id="card3">
+    <div class="sc-inner">
+      <div class="sc-top">
+        <div class="sc-num-badge" id="badge3">3</div>
+        <div class="sc-head">
+          <div class="sc-step-lbl">PASSO 03 — DESBLOQUEIE O PASSO 2</div>
+          <div class="sc-title">ENTRA NO GRUPO</div>
+        </div>
+        <div class="done-check">✅</div>
+      </div>
+      <div class="sc-content">
+        <p class="sc-body">
+          O lançamento vai rolar <strong>ao vivo no grupo do WhatsApp</strong>.
+          É lá que você acompanha tudo no dia 01/04 e recebe as instruções de ativação.
+        </p>
+        <a class="confirm-btn cb-zap" href="https://devzapp.com.br/api-engennier/campanha/api/redirect/67afa5e33a35eb00016e97ff"
+          target="_blank" rel="noopener noreferrer"
+          style="display:flex;align-items:center;justify-content:center;gap:10px;
+            text-decoration:none;margin-bottom:10px"
+          onclick="completeStep(3)">
+          <span style="font-size:18px">💬</span> ENTRAR NO GRUPO AGORA
+        </a>
+
+        <!-- DONE BANNER aparece após clicar -->
+        <div class="done-banner" id="done-banner">
+          <div class="done-banner-t">🎉 VOCÊ COMPLETOU TUDO!</div>
+          <p class="done-banner-p">
+            Agora é só aguardar o dia <strong>01 de Abril</strong>.
+            Fique de olho no <strong>grupo do WhatsApp e no e-mail</strong> — você vai receber tudo por lá.
+          </p>
+        </div>
+
+        <div class="unlock-hint" id="hint3" style="color:var(--w3)">
+          Clique no botão acima para entrar no grupo
+        </div>
+
+        <!-- LAUNCH BOX -->
+        <div class="launch-box" style="margin-top:20px">
+          <div class="launch-inner">
+            <div>
+              <div class="launch-t">⚡ LANÇAMENTO 01/04</div>
+              <p class="launch-p">Fique de olho no <strong>grupo e no e-mail</strong>. No dia você recebe as instruções completas para ativar seu JR INDEX.</p>
+            </div>
+            <div class="launch-cal">
+              <div class="launch-cal-d">01</div>
+              <div class="launch-cal-m">ABR · 2026</div>
+              <div class="cd-ob" id="cd-ob">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- steps-stack -->
+
+<!-- STRIP -->
+<div class="strip">
+  <img class="strip-img" src="/foto.png" alt="André JR" loading="lazy" decoding="async">
+  <div>
+    <div class="strip-ey">sobre o criador</div>
+    <h2 class="strip-h">3 ANOS<br><span>ATÉ CHEGAR</span><br>NELE.</h2>
+    <p class="strip-p">Testei dezenas de indicadores. Quebrei bancas.
+      O JR INDEX foi construído <strong>linha por linha</strong>, testado em operação real
+      por mais de 3 anos — até virar o principal instrumento da minha mesa.<br><br>
+      Agora você vai ter o mesmo acesso.
+    </p>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="foot-logo"><span class="logo-dot"></span>JR INDEX</div>
+  <p>© 2026 JR INDEX · Todos os direitos reservados</p>
+  <p>Resultados podem variar. Trading envolve risco. Opere com responsabilidade.</p>
+</footer>
+
+<script>
+'use strict';
+
+// ── STEP MACHINE ──────────────────────────────────────────────
+const TOTAL_STEPS = 3;
+let currentStep = 1;
+
+function completeStep(n) {
+  if (n !== currentStep) return;
+
+  const card = document.getElementById('card' + n);
+  const badge = document.getElementById('badge' + n);
+
+  // Mark done
+  card.classList.remove('active');
+  card.classList.add('done');
+  badge.textContent = '✓';
+
+  // Update label
+  const lbl = document.getElementById('lbl' + n);
+  if (lbl) { lbl.classList.remove('active'); lbl.classList.add('done'); }
+
+  // Update progress bar
+  const fill = document.getElementById('prog-fill');
+  if (fill) fill.style.width = (n / TOTAL_STEPS * 100) + '%';
+
+  // Show done banner on step 3
+  if (n === 3) {
+    const banner = document.getElementById('done-banner');
+    if (banner) banner.classList.add('show');
+    const hint = document.getElementById('hint3');
+    if (hint) hint.style.display = 'none';
+    return;
+  }
+
+  // Unlock next
+  currentStep = n + 1;
+  const next = document.getElementById('card' + currentStep);
+  if (next) {
+    next.classList.remove('locked');
+    next.classList.add('active', 'step-unlock-anim');
+
+    // Update next label text
+    const stepLbl = next.querySelector('.sc-step-lbl');
+    if (stepLbl) stepLbl.textContent = 'PASSO 0' + currentStep + ' — FAÇA AGORA';
+
+    const nextLbl = document.getElementById('lbl' + currentStep);
+    if (nextLbl) nextLbl.classList.add('active');
+
+    // Scroll to next card smoothly
+    setTimeout(() => {
+      next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
+  }
+}
+
+// ── EMAIL TABS ──────────────────────────────────────────────
+function tab(btn, id) {
+  document.querySelectorAll('.etab-btn').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.etab-pane').forEach(p => p.classList.remove('on'));
+  btn.classList.add('on');
+  const el = document.getElementById('tab-' + id);
+  if (el) el.classList.add('on');
+}
+
+// ── INSTAGRAM FOLLOW ANIMATION ──────────────────────────────────────────────
+function igFollow() {
+  const btn = document.getElementById('ig-btn');
+  if (!btn || btn.dataset.done) return;
+  btn.dataset.done = '1';
+  btn.textContent = 'Seguindo ✓';
+  btn.classList.add('following');
+
+  // Spark burst
+  const colors = ['#DD2A7B','#F58529','#8134AF','#515BD4','#fff'];
+  const rect = btn.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+  for (let i = 0; i < 10; i++) {
+    const d = document.createElement('div');
+    const angle = Math.random() * 360;
+    const dist = 25 + Math.random() * 35;
+    const sx = Math.cos(angle * Math.PI / 180) * dist + 'px';
+    const sy = Math.sin(angle * Math.PI / 180) * dist + 'px';
+    d.style.cssText = `position:fixed;width:5px;height:5px;border-radius:50%;
+      background:${colors[i % colors.length]};pointer-events:none;z-index:9999;
+      left:${cx}px;top:${cy}px;
+      animation:spark .5s ease forwards;
+      --sx:${sx};--sy:${sy}`;
+    document.body.appendChild(d);
+    setTimeout(() => d.remove(), 600);
+  }
+  if (!document.getElementById('spark-css')) {
+    const s = document.createElement('style');
+    s.id = 'spark-css';
+    s.textContent = '@keyframes spark{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--sx),var(--sy)) scale(0);opacity:0}}';
+    document.head.appendChild(s);
+  }
+}
+
+// ── COUNTDOWN ──────────────────────────────────────────────
+(function () {
+  const t = new Date('2026-04-01T00:00:00-03:00');
+  const el = document.getElementById('cd-ob');
+  function upd() {
+    if (!el) return;
+    const df = t - new Date();
+    if (df <= 0) { el.textContent = 'JÁ ABRIU! 🚀'; return; }
+    const d = Math.floor(df / 864e5), h = Math.floor((df % 864e5) / 36e5),
+          m = Math.floor((df % 36e5) / 6e4), s = Math.floor((df % 6e4) / 1e3);
+    el.textContent = d + 'd ' + String(h).padStart(2,'0') + 'h ' + String(m).padStart(2,'0') + 'm ' + String(s).padStart(2,'0') + 's';
+  }
+  upd(); setInterval(upd, 1000);
+})();
+
+// ── PARTICLES ──────────────────────────────────────────────
+(function () {
+  const cv = document.getElementById('pts');
+  if (!cv) return;
+  const ctx = cv.getContext('2d');
+  let W, H, pts, raf;
+  function init() {
+    W = cv.width = window.innerWidth; H = cv.height = window.innerHeight;
+    const n = Math.min(Math.floor(W * H / 26000), 60);
+    pts = Array.from({ length: n }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 1.3 + .3,
+      vx: (Math.random() - .5) * .2, vy: (Math.random() - .5) * .2,
+      a: Math.random() * Math.PI * 2, s: Math.random() * .003 + .001,
+      t: Math.floor(Math.random() * 3)
+    }));
+  }
+  init();
+  new ResizeObserver(() => { cancelAnimationFrame(raf); init(); }).observe(document.body);
+  const cols = [a => `rgba(16,185,129,${a})`, a => `rgba(167,139,250,${a})`, a => `rgba(245,158,11,${a})`];
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    pts.forEach(p => {
+      p.x += p.vx; p.y += p.vy; p.a += p.s;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      const al = Math.abs(Math.sin(p.a)) * .22;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = cols[p.t](al); ctx.fill();
+    });
+    raf = requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── CONFETTI ──────────────────────────────────────────────
+(function () {
+  const cc = ['#A78BFA','#F59E0B','#10B981','#EDE9FE','#FCD34D','#6EE7B7','#DD2A7B'];
+  const s = document.createElement('style');
+  s.textContent = '@keyframes cf{0%{transform:translateY(-10px) rotate(0);opacity:1}100%{transform:translateY(108vh) rotate(540deg);opacity:0}}';
+  document.head.appendChild(s);
+  for (let i = 0; i < 48; i++) {
+    const d = document.createElement('div'), sz = Math.random() * 7 + 3;
+    d.style.cssText = `position:fixed;top:-8px;left:${Math.random()*100}vw;
+      width:${sz}px;height:${sz}px;border-radius:${Math.random()>.5?'50%':'2px'};
+      background:${cc[i%cc.length]};z-index:9999;pointer-events:none;
+      animation:cf ${2+Math.random()*2}s ease ${Math.random()*1.2}s forwards`;
+    document.body.appendChild(d);
+    setTimeout(() => d.remove(), 4500);
+  }
+})();
+</script>
+</body>
+</html>
