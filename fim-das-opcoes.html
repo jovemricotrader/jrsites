@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="29 de Abril · 21h · YouTube. Uma noite que vai separar quem ainda opera no escuro de quem vai entender o mercado de verdade.">
+<meta property="og:image" content="https://fimdeob.jovemrico.com/jr-foto.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:title" content="O FIM DAS OPÇÕES BINÁRIAS — 29 ABR · 21H">
+<meta property="og:description" content="7 anos. Milhares de trades. Uma noite. O que ninguém teve coragem de falar sobre OB — ao vivo.">
+<title>O FIM DAS OPÇÕES BINÁRIAS — 29 ABR · 21H · JR TRADER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{
+  colors:{
+    "aobg":"#10131f","aobg2":"#181b27","aobg3":"#1c1f2b","aobg4":"#272936","aobg5":"#323441","aobg0":"#0b0e19",
+    "aoprimary":"#baf2ff","aopc":"#00e0ff","aosecondary":"#42f09e","aosc":"#00d384",
+    "aotertiary":"#ffe4c3","aotc":"#ffc165","aosurf":"#e0e1f3","aomuted":"#bac9cd","aodim":"#859397","aoghost":"#3b494c",
+    "aoerr":"#ffb4ab","aoerc":"#93000a"
+  },
+  fontFamily:{hl:["Bebas Neue","sans-serif"],cond:["Barlow Condensed","sans-serif"],body:["Barlow","sans-serif"],mono:["Share Tech Mono","monospace"]},
+  borderRadius:{DEFAULT:"0.125rem",md:"0.25rem",lg:"0.5rem",full:"0.75rem"},
+}}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+.mat-icon{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;font-family:'Material Symbols Outlined';vertical-align:middle;line-height:1}
+.mat-fill{font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;font-family:'Material Symbols Outlined';vertical-align:middle;line-height:1}
+body{cursor:none;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+#cur{position:fixed;width:5px;height:5px;background:#00e0ff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen}
+#cur2{position:fixed;width:22px;height:22px;border:1px solid rgba(0,224,255,.22);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s,top .12s}
+@media(hover:none){#cur,#cur2{display:none}body{cursor:auto}}
+.scanline{background:linear-gradient(to bottom,transparent 50%,rgba(0,224,255,.03) 50%),linear-gradient(90deg,rgba(255,0,0,.01),rgba(0,255,0,.005),rgba(0,0,255,.01));background-size:100% 4px,3px 100%;pointer-events:none}
+.glow-c{box-shadow:0 0 24px rgba(0,224,255,.25)}
+.glow-g{box-shadow:0 0 16px rgba(66,240,158,.18)}
+.glow-gold{box-shadow:0 0 16px rgba(255,193,101,.18)}
+.glass{background:rgba(28,31,43,.75);backdrop-filter:blur(20px)}
+@keyframes op{0%,100%{box-shadow:0 0 0 0 rgba(66,240,158,.5)}70%{box-shadow:0 0 0 7px rgba(66,240,158,0)}}
+.op{animation:op 2s ease infinite}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker{animation:tick 32s linear infinite;display:inline-block;white-space:nowrap}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.ru{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.ru.vis{opacity:1;transform:none}
+.hl-anim{animation:fadeUp .6s ease both}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}.d5{animation-delay:.7s}
+@keyframes glitch{0%,92%,100%{clip-path:none;transform:none}93%{clip-path:polygon(0 8%,100% 8%,100% 30%,0 30%);transform:translate(-4px,0)}96%{clip-path:polygon(0 60%,100% 60%,100% 80%,0 80%);transform:translate(4px,0)}}
+.glitch{animation:glitch 9s ease infinite 5s}
+@keyframes ripple{from{transform:scale(0);opacity:.35}to{transform:scale(3.5);opacity:0}}
+@keyframes sUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.sup{animation:sUp .35s ease}
+@keyframes bFill{from{width:0}to{width:var(--w)}}
+.bfill{animation:bFill 1.3s ease both}
+@keyframes bPulse{0%,100%{border-color:rgba(0,224,255,.15)}50%{border-color:rgba(0,224,255,.5)}}
+.bpulse{animation:bPulse 3.5s ease infinite}
+@keyframes lineIn{from{width:0}to{width:100%}}
+.line-in{animation:lineIn 1s ease both}
+/* RESPONSIVE */
+@media(max-width:639px){
+  section.hero{padding-top:80px!important;padding-bottom:90px!important;min-height:95svh}
+  .date-badges{overflow-x:auto;-webkit-overflow-scrolling:touch;justify-content:flex-start!important;padding:0 4px}
+  .date-badges>div{flex-shrink:0}
+  .hero-ctas button{width:100%;max-width:320px}
+  .lotes-grid{grid-template-columns:1fr!important}
+  .lote-destaque{transform:none!important}
+  .atos-grid{grid-template-columns:1fr 1fr!important}
+  .presenter-grid{grid-template-columns:1fr!important}
+  .presenter-photo{order:-1;max-height:400px;overflow:hidden}
+  footer{padding-bottom:72px!important}
+  .stats-row{gap:16px!important;flex-wrap:wrap}
+}
+@media(min-width:640px) and (max-width:1023px){
+  .lotes-grid{grid-template-columns:1fr 1fr!important}
+  .lote-destaque{transform:none!important;grid-column:1/-1}
+  .atos-grid{grid-template-columns:1fr 1fr!important}
+}
+@media(min-width:1024px){.lote-destaque{transform:scale(1.05)}}
+*{-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;-webkit-overflow-scrolling:touch}
+button{touch-action:manipulation}
+body{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+nav.mobile-nav{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 8px)}
+/* QUOTE BLOCK */
+.quote-block{border-left:3px solid rgba(0,224,255,.3);padding:14px 20px;background:rgba(0,224,255,.04)}
+/* STAT CARD */
+.stat-card{background:var(--bg4,#272936);border:1px solid rgba(0,224,255,.08);padding:20px;text-align:center}
+/* PROOF PILL */
+.proof-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(66,240,158,.07);border:1px solid rgba(66,240,158,.18);padding:6px 14px;border-radius:2px}
+</style>
+</head>
+<body class="bg-aobg text-aosurf font-body">
+
+<div id="cur"></div><div id="cur2"></div>
+
+<!-- EXIT POPUP -->
+<div id="xpop" style="display:none" class="fixed inset-0 z-[600] flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-aobg/90 backdrop-blur-xl" data-action="close-xp"></div>
+  <div class="relative z-10 glass border border-aopc/25 rounded-md p-10 max-w-sm w-full text-center sup">
+    <button data-action="close-xp" class="absolute top-3 right-4 text-aoghost hover:text-aosurf font-hl text-lg">✕</button>
+    <div class="font-mono text-[9px] tracking-[.4em] text-aoghost uppercase mb-2">UMA COISA ANTES DE IR</div>
+    <h2 class="font-hl text-3xl leading-none mb-3 text-aosurf">LOTE 2<br><span class="text-aoerr">ACABANDO</span></h2>
+    <p class="text-aomuted text-sm mb-5 leading-relaxed">Quando fechar, o preço sobe. E essa noite não se repete.</p>
+    <div class="bg-aobg4 border border-aopc/20 rounded p-4 mb-5">
+      <div class="font-hl text-5xl text-aopc" id="xp-vagas">12</div>
+      <div class="font-mono text-[9px] tracking-[.2em] text-aomuted mt-1">VAGAS · LOTE 2 · R$27</div>
+    </div>
+    <button data-action="close-scroll" data-target="lotes" class="w-full py-3 bg-aopc text-aobg font-hl text-xl tracking-wider rounded hover:brightness-110 active:scale-95 transition-all mb-2 glow-c">GARANTIR AGORA →</button>
+    <button data-action="close-xp" class="font-mono text-[9px] text-aoghost tracking-[.1em] underline">Prefiro pagar mais depois</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="fixed top-0 w-full z-[200] flex justify-between items-center px-5 py-3 bg-aobg/80 backdrop-blur-xl border-b border-aoghost/15">
+  <div class="flex items-center gap-2">
+    <span class="mat-icon text-aopc text-xl">sensors</span>
+    <span class="font-hl text-xl tracking-[.08em] text-aoprimary">FIM DAS OB</span>
+  </div>
+  <div class="hidden md:flex items-center gap-2">
+    <span class="w-2 h-2 rounded-full bg-aosecondary op"></span>
+    <span class="font-mono text-[9px] text-aosecondary/70 tracking-[.2em] uppercase">AO VIVO · 29 ABR · 21H</span>
+  </div>
+  <button data-action="scroll" data-target="lotes" class="font-cond font-bold text-xs tracking-[.1em] uppercase px-4 py-2 border border-aopc/35 text-aoprimary hover:bg-aopc/10 hover:border-aopc transition-all rounded-sm">GARANTIR VAGA</button>
+</header>
+
+<!-- TICKER -->
+<div class="mt-[52px] bg-aobg2 border-b border-aoghost/10 overflow-hidden py-2 relative z-10">
+  <div class="ticker">
+    <span class="font-mono text-[9px] tracking-[.2em] text-aoghost mx-10">O FIM DAS OPÇÕES BINÁRIAS <span class="text-aopc">·</span> 29 ABRIL 2026 <span class="text-aopc">·</span> 21H BRASÍLIA</span>
+    <span class="font-mono text-[9px] tracking-[.2em] text-aoghost mx-10">EVENTO FECHADO <span class="text-aopc">·</span> ACESSO VIA INGRESSO <span class="text-aopc">·</span> @JOVEMRICOTRADER</span>
+    <span class="font-mono text-[9px] tracking-[.2em] text-aoghost mx-10">LOTE 2 DISPONÍVEL <span class="text-aosecondary">·</span> 12 VAGAS <span class="text-aopc">·</span> R$27</span>
+    <span class="font-mono text-[9px] tracking-[.2em] text-aoghost mx-10">O FIM DAS OPÇÕES BINÁRIAS <span class="text-aopc">·</span> 29 ABRIL 2026 <span class="text-aopc">·</span> 21H BRASÍLIA</span>
+    <span class="font-mono text-[9px] tracking-[.2em] text-aoghost mx-10">EVENTO FECHADO <span class="text-aopc">·</span> ACESSO VIA INGRESSO <span class="text-aopc">·</span> @JOVEMRICOTRADER</span>
+    <span class="font-mono text-[9px] tracking-[.2em] text-aoghost mx-10">LOTE 2 DISPONÍVEL <span class="text-aosecondary">·</span> 12 VAGAS <span class="text-aopc">·</span> R$27</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero relative min-h-[92vh] flex flex-col items-center justify-center text-center px-5 overflow-hidden scanline">
+  <div class="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,224,255,.08),transparent_60%)] pointer-events-none"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_40%,rgba(0,224,255,.05),transparent)] pointer-events-none"></div>
+  <div class="relative z-10 max-w-5xl mx-auto">
+    <!-- Live badge -->
+    <div class="flex items-center justify-center gap-2 mb-6 hl-anim d1">
+      <span class="w-2 h-2 rounded-full bg-aosecondary op"></span>
+      <span class="font-mono text-[10px] text-aosecondary/80 tracking-[.3em] uppercase">Evento Ao Vivo · 29 de Abril de 2026</span>
+    </div>
+    <!-- Main title -->
+    <h1 class="font-hl leading-[.88] mb-6 hl-anim d2 glitch">
+      <span class="block text-[clamp(52px,11vw,138px)] text-aosurf">O FIM DAS</span>
+      <span class="block text-[clamp(48px,10vw,128px)] text-aopc">OPÇÕES</span>
+      <span class="block text-[clamp(52px,11vw,138px)] text-aosurf">BINÁRIAS.</span>
+    </h1>
+    <!-- Subheadline — impactante -->
+    <p class="font-cond text-[clamp(18px,2.5vw,26px)] font-light text-aomuted tracking-wide max-w-3xl mx-auto mb-3 hl-anim d3 uppercase leading-tight">
+      Não é sobre parar de operar.<br>
+      <strong class="text-aosurf font-bold">É sobre parar de operar errado.</strong>
+    </p>
+    <p class="font-cond text-[clamp(14px,1.8vw,18px)] font-light text-aoghost tracking-widest max-w-2xl mx-auto mb-10 hl-anim d3 uppercase">
+      7 anos de mercado. Uma noite fechada. Tudo ao vivo.
+    </p>
+    <!-- Date badges -->
+    <div class="date-badges flex justify-center mb-8 hl-anim d4">
+      <div class="flex items-stretch border border-aoghost/20 rounded-sm overflow-hidden">
+        <div class="px-5 py-3 text-center border-r border-aoghost/20"><div class="font-hl text-3xl text-aosurf">22</div><div class="font-mono text-[8px] text-aoghost tracking-[.3em]">ABRIL</div></div>
+        <div class="px-5 py-3 text-center border-r border-aoghost/20"><div class="font-hl text-3xl text-aosurf">21H</div><div class="font-mono text-[8px] text-aoghost tracking-[.3em]">BRASÍLIA</div></div>
+        <div class="px-5 py-3 text-center border-r border-aoghost/20"><div class="font-hl text-3xl text-aosurf">AO VIVO</div><div class="font-mono text-[8px] text-aoghost tracking-[.3em]">YOUTUBE</div></div>
+        <div class="px-5 py-3 text-center"><div class="font-hl text-3xl text-aotc">EXCLUSIVO</div><div class="font-mono text-[8px] text-aoghost tracking-[.3em]">ACESSO</div></div>
+      </div>
+    </div>
+    <!-- CTAs -->
+    <div class="hero-ctas flex flex-wrap gap-3 justify-center hl-anim d5">
+      <button data-action="scroll" data-target="lotes" class="relative overflow-hidden px-10 py-4 bg-aopc text-aobg font-hl text-2xl tracking-wider rounded-sm glow-c hover:brightness-110 active:scale-95 transition-all rpl">QUERO MINHA VAGA →</button>
+      <button data-action="scroll" data-target="noite" class="px-10 py-4 border border-aoghost/40 text-aomuted font-hl text-2xl tracking-wider rounded-sm hover:border-aoprimary hover:text-aoprimary transition-all">COMO FUNCIONA</button>
+    </div>
+  </div>
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-25">
+    <span class="font-mono text-[9px] tracking-[.3em]">SCROLL</span>
+    <span class="mat-icon text-sm animate-bounce">keyboard_double_arrow_down</span>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="bg-aobg2 border-y border-aoghost/10 py-10 text-center relative z-10">
+  <div class="font-mono text-[9px] tracking-[.5em] text-aoghost uppercase mb-5">A NOITE COMEÇA EM</div>
+  <div class="flex justify-center items-center gap-0 flex-nowrap overflow-x-auto px-2">
+    <div class="text-center px-4 md:px-8"><div class="font-hl text-[clamp(44px,9vw,88px)] text-aosurf" id="cd-d">00</div><div class="font-mono text-[8px] tracking-[.3em] text-aoghost">DIAS</div></div>
+    <div class="font-hl text-[clamp(36px,7vw,70px)] text-aoghost leading-none self-start mt-2 px-1">:</div>
+    <div class="text-center px-4 md:px-8"><div class="font-hl text-[clamp(44px,9vw,88px)] text-aosurf" id="cd-h">00</div><div class="font-mono text-[8px] tracking-[.3em] text-aoghost">HORAS</div></div>
+    <div class="font-hl text-[clamp(36px,7vw,70px)] text-aoghost leading-none self-start mt-2 px-1">:</div>
+    <div class="text-center px-4 md:px-8"><div class="font-hl text-[clamp(44px,9vw,88px)] text-aosurf" id="cd-m">00</div><div class="font-mono text-[8px] tracking-[.3em] text-aoghost">MIN</div></div>
+    <div class="font-hl text-[clamp(36px,7vw,70px)] text-aoghost leading-none self-start mt-2 px-1">:</div>
+    <div class="text-center px-4 md:px-8"><div class="font-hl text-[clamp(44px,9vw,88px)] text-aopc" id="cd-sec">00</div><div class="font-mono text-[8px] tracking-[.3em] text-aoghost">SEG</div></div>
+  </div>
+  <div class="font-mono text-[10px] text-aoghost/60 tracking-[.2em] mt-4">EVENTO FECHADO · <span class="text-aoprimary">ACESSO VIA INGRESSO</span></div>
+</div>
+
+<!-- THE STORY — gancho emocional -->
+<section id="noite" class="py-20 px-4 md:px-8 bg-aobg relative z-10">
+  <div class="max-w-3xl mx-auto">
+    <div class="font-mono text-[9px] tracking-[.5em] text-aopc uppercase mb-4 ru">O COMEÇO DE TUDO</div>
+    <h2 class="font-hl text-[clamp(38px,6vw,72px)] leading-none mb-10 ru">
+      EU JÁ FUI<br><span class="text-aopc">VOCÊ.</span>
+    </h2>
+    <div class="space-y-6 text-aomuted text-[16px] leading-[1.95]">
+      <p class="ru">Tinha uma sala de sinais que eu pagava R$97 por mês. Todo dia de manhã abria o Telegram, esperava o alerta, entrava. Às vezes ganhava, na maioria perdia. E quando perdia, achava que o problema era <em class="text-aosurf not-italic font-semibold">eu</em>.</p>
+      <div class="quote-block ru">
+        <p class="text-aosurf text-[15px] italic leading-relaxed">"O sinal foi certeiro — você que entrou na hora errada."<br>"Espera o setup aparecer de novo."<br>"Gestão, gestão, gestão."</p>
+        <p class="font-mono text-[9px] text-aoghost tracking-[.1em] mt-3">— frases que me custaram uma nota antes de entender o que estava acontecendo</p>
+      </div>
+      <p class="ru">Não era eu que estava errando. Era o método. <strong class="text-aosurf">Sala de sinal não ensina ninguém a operar.</strong> Ela cria dependência. Você nunca aprende a ler o gráfico — você só aprende a apertar o botão quando alguém manda.</p>
+      <p class="ru">Levei anos pra entender isso. Perdi dinheiro pra entender isso. E quando entendi — quando parei de seguir e comecei a <strong class="text-aosurf">ler</strong> — tudo mudou.</p>
+      <p class="ru">No dia 29 de Abril, às 21h, eu vou mostrar ao vivo o que descobri. <span class="text-aopc font-semibold">Sem filtro. Sem papo de curso. Sem enrolação.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- SEPARADOR IMPACTO -->
+<div class="py-8 px-4 bg-aobg2 border-y border-aoghost/10 relative z-10">
+  <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="stat-card ru">
+      <div class="font-hl text-4xl text-aosurf">+7</div>
+      <div class="font-mono text-[8px] text-aoghost tracking-[.2em] mt-1">ANOS EM OB</div>
+    </div>
+    <div class="stat-card ru" style="transition-delay:.05s">
+      <div class="font-hl text-4xl text-aopc">6x</div>
+      <div class="font-mono text-[8px] text-aoghost tracking-[.2em] mt-1">DIAS POR SEMANA</div>
+    </div>
+    <div class="stat-card ru" style="transition-delay:.1s">
+      <div class="font-hl text-4xl text-aosecondary">1</div>
+      <div class="font-mono text-[8px] text-aoghost tracking-[.2em] mt-1">MÉTODO QUE FUNCIONA</div>
+    </div>
+    <div class="stat-card ru" style="transition-delay:.15s">
+      <div class="font-hl text-4xl text-aotc">29/04</div>
+      <div class="font-mono text-[8px] text-aoghost tracking-[.2em] mt-1">TUDO AO VIVO</div>
+    </div>
+  </div>
+</div>
+
+<!-- O QUE VAI ACONTECER — 4 atos reescritos -->
+<section id="atos" class="py-20 px-4 md:px-8 bg-aobg2 relative z-10">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-14 ru">
+      <div>
+        <div class="font-mono text-[9px] tracking-[.5em] text-aopc uppercase mb-3">O QUE VAI ACONTECER NESSA NOITE</div>
+        <h2 class="font-hl text-[clamp(40px,7vw,76px)] leading-none">90 MINUTOS<br><span class="text-aopc">4 REVELAÇÕES.</span></h2>
+      </div>
+      <div class="font-mono text-xs text-aosecondary border-l-2 border-aosecondary pl-4">EM ORDEM.<br>SEM CORTE.</div>
+    </div>
+    <div class="atos-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- ATO 1 -->
+      <div class="bg-aobg4 p-7 rounded-sm hover:bg-aobg5 transition-colors ru group" style="transition-delay:.04s">
+        <div class="font-mono text-aopc text-4xl mb-2 leading-none">01</div>
+        <div class="font-mono text-[8px] text-aoghost tracking-[.2em] mb-5">~21:00 — 21:20</div>
+        <h3 class="font-cond font-bold text-xl mb-3 tracking-wide text-aosurf">POR QUE VOCÊ AINDA NÃO ESTÁ LUCRANDO</h3>
+        <p class="text-aomuted text-sm leading-relaxed">Exposição técnica e sem piedade: o motivo real pelo qual M1, M5, salas de sinal e robôs destroem sua banca mesmo quando você faz tudo "certo".</p>
+        <div class="mt-5 font-mono text-[9px] text-aoerr tracking-[.1em]">⚠ Vai doer se você usa algum desses</div>
+      </div>
+      <!-- ATO 2 -->
+      <div class="bg-aobg4 p-7 rounded-sm hover:bg-aobg5 transition-colors ru group" style="transition-delay:.08s">
+        <div class="font-mono text-aopc text-4xl mb-2 leading-none">02</div>
+        <div class="font-mono text-[8px] text-aoghost tracking-[.2em] mb-5">~21:20 — 21:50</div>
+        <h3 class="font-cond font-bold text-xl mb-3 tracking-wide text-aosurf">COMO O MERCADO REALMENTE FUNCIONA</h3>
+        <p class="text-aomuted text-sm leading-relaxed">Volume. Pressão. Fluxo de ordem. O que o dinheiro grande faz <em>antes</em> do preço mover — e como você pode ler isso sem nenhum indicador.</p>
+        <div class="mt-5 font-mono text-[9px] text-aopc tracking-[.1em]">↗ A virada começa aqui</div>
+      </div>
+      <!-- ATO 3 -->
+      <div class="bg-aobg4 p-7 rounded-sm hover:bg-aobg5 transition-colors border-b-2 border-aopc ru group" style="transition-delay:.12s">
+        <div class="font-mono text-aopc text-4xl mb-2 leading-none">03</div>
+        <div class="font-mono text-[8px] text-aoghost tracking-[.2em] mb-5">~21:50 — 22:15</div>
+        <h3 class="font-cond font-bold text-xl mb-3 tracking-wide text-aosurf">O QUE EU PASSEI 1 ANO CONSTRUINDO</h3>
+        <p class="text-aomuted text-sm leading-relaxed">Primeira apresentação pública do <strong class="text-aopc">JR ORÁCULO</strong>. Demo ao vivo, gráfico real, corretora real. Você vai ver o clone da minha leitura em operação.</p>
+        <div class="mt-5 inline-block px-2 py-1 text-[9px] font-mono tracking-[.12em] bg-aobg3 border border-aopc/35 text-aopc rounded-sm">★ REVELAÇÃO · NENHUM PREVIEW</div>
+      </div>
+      <!-- ATO 4 -->
+      <div class="bg-aobg4 p-7 rounded-sm hover:bg-aobg5 transition-colors ru group" style="transition-delay:.16s">
+        <div class="font-mono text-aotc text-4xl mb-2 leading-none">04</div>
+        <div class="font-mono text-[8px] text-aoghost tracking-[.2em] mb-5">~22:15 — FIM</div>
+        <h3 class="font-cond font-bold text-xl mb-3 tracking-wide text-aotertiary">OFERTA QUE SÓ EXISTE NESSA NOITE</h3>
+        <p class="text-aomuted text-sm leading-relaxed">Preço simbólico revelado ao vivo. Válido enquanto a live estiver no ar. Quando eu sair do ar — fecha. Sem replay, sem segunda chance.</p>
+        <div class="mt-5 font-mono text-[9px] text-aotc tracking-[.1em]">⏱ ENCERRA COM A LIVE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGÊNCIA / MANIFESTO -->
+<section class="py-20 px-4 md:px-8 bg-aobg relative z-10">
+  <div class="max-w-3xl mx-auto text-center ru">
+    <div class="font-mono text-[9px] tracking-[.5em] text-aopc uppercase mb-4">O QUE ESTÁ EM JOGO</div>
+    <h2 class="font-hl text-[clamp(38px,6vw,70px)] leading-none mb-8">
+      CADA DIA QUE VOCÊ<br><span class="text-aoerr">OPERA ERRADO</span><br>TEM UM CUSTO.
+    </h2>
+    <div class="space-y-4 text-aomuted text-base leading-[1.9] text-left">
+      <p class="ru">Não é só o dinheiro perdido. É o tempo. É a energia. É a dependência de quem te manda alerta toda manhã e vai embora quando você questiona os resultados.</p>
+      <p class="ru">A maioria das pessoas que opera OB nunca vai mudar o método. Vai continuar em sala de sinal, vai continuar no M1, vai continuar achando que o problema é a entrada — <strong class="text-aosurf">quando o problema é a base.</strong></p>
+      <p class="ru">Essa live não é pra todo mundo. <span class="text-aopc font-semibold">É pra quem está cansado de depender e quer entender de verdade.</span></p>
+    </div>
+    <!-- Mid-page CTA agressivo -->
+    <div class="mt-10 ru">
+      <button data-action="scroll" data-target="lotes" class="px-12 py-5 bg-aopc text-aobg font-hl text-[clamp(18px,2.5vw,24px)] tracking-[.06em] rounded-sm glow-c hover:brightness-110 active:scale-95 transition-all rpl">
+        QUERO ENTENDER DE VERDADE →
+      </button>
+      <div class="font-mono text-[9px] text-aoghost tracking-[.18em] mt-3">EVENTO EXCLUSIVO · ACESSO APENAS COM INGRESSO</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM É JR -->
+<section id="apresentador" class="py-20 px-4 md:px-8 bg-aobg2 relative z-10">
+  <div class="max-w-5xl mx-auto">
+    <div class="presenter-grid grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+      <!-- Foto -->
+      <div class="presenter-photo relative ru">
+        <div class="absolute -inset-6 bg-aopc/6 blur-3xl rounded-full pointer-events-none"></div>
+        <div class="relative overflow-hidden rounded-sm border-l border-aopc/20">
+          <img src="jr-foto.png" alt="JR" class="w-full object-cover object-top" style="filter:contrast(1.08) saturate(1.05)" onerror="this.src='https://drive.google.com/uc?export=view&id=1DkTx0JJSwLyTc3eNJlPtj2ScJTwr6IHn'">
+          <div class="absolute inset-0 bg-gradient-to-t from-aobg2 via-transparent to-transparent opacity-70"></div>
+        </div>
+        <div class="absolute bottom-5 left-5 right-5 glass border border-aoghost/20 p-4 rounded-sm">
+          <div class="font-cond font-bold text-xl tracking-[.04em]">JR</div>
+          <div class="font-mono text-[8px] text-aoghost tracking-[.18em] mt-0.5">@JOVEMRICOTRADER · 7 ANOS EM OB</div>
+        </div>
+      </div>
+      <!-- Texto -->
+      <div class="ru" style="transition-delay:.12s">
+        <div class="font-mono text-[9px] tracking-[.4em] text-aosecondary uppercase mb-4">QUEM ESTÁ FALANDO</div>
+        <h2 class="font-hl leading-none mb-6">
+          <span class="text-[clamp(30px,4vw,46px)] text-aosurf block">QUEM É</span>
+          <span class="text-[clamp(40px,6vw,68px)] text-aopc block">JOVEM RICO TRADER?</span>
+        </h2>
+        <div class="space-y-4 text-aomuted text-[15px] leading-[1.9]">
+          <p>Comecei em opções binárias do zero. Passei por tudo que não funciona — sala de sinal, robô, M1, Fibonacci — e aprendi na dor o que realmente move o preço.</p>
+          <p><strong class="text-aosurf">Hoje opero puro preço, volume e fluxo.</strong> Sem indicador, sem guru, sem dependência. Criei o JR INDEX — o primeiro indicador de OB aprovado nativamente no TradingView por um desenvolvedor brasileiro.</p>
+          <p>Passei <strong class="text-aosurf">1 ano construindo o JR ORÁCULO</strong> — o clone do meu processo de leitura, encapsulado numa extensão. Nessa noite, apresento pela primeira vez.</p>
+        </div>
+        <div class="stats-row flex gap-10 mt-8 pt-8 border-t border-aoghost/15">
+          <div><div class="font-hl text-4xl text-aosurf">+7</div><div class="font-mono text-[8px] text-aosecondary tracking-[.2em] mt-1">ANOS EM OB</div></div>
+          <div><div class="font-hl text-4xl text-aosurf">6x</div><div class="font-mono text-[8px] text-aosecondary tracking-[.2em] mt-1">DIAS/SEMANA</div></div>
+          <div><div class="font-hl text-4xl text-aotc">29/04</div><div class="font-mono text-[8px] text-aosecondary tracking-[.2em] mt-1">AO VIVO</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ LEVA -->
+<section class="py-20 px-4 md:px-8 bg-aobg relative z-10">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-14 ru">
+      <div class="font-mono text-[9px] tracking-[.5em] text-aopc uppercase mb-3">AO ASSISTIR ESSA LIVE VOCÊ VAI</div>
+      <h2 class="font-hl text-[clamp(38px,6vw,68px)] leading-none">SAIR DIFERENTE<br><span class="text-aopc">DE QUANDO ENTROU.</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex gap-4 p-5 bg-aobg2 border border-aoghost/10 rounded-sm hover:border-aopc/20 transition-colors ru" style="transition-delay:.04s">
+        <div class="text-aosecondary text-xl flex-shrink-0 mt-0.5">✓</div>
+        <div>
+          <div class="font-cond font-bold text-base text-aosurf mb-1">Entender por que ainda não lucra</div>
+          <div class="text-aomuted text-sm leading-relaxed">Não é falta de disciplina. Não é azar. É o método — e você vai saber exatamente qual é o problema.</div>
+        </div>
+      </div>
+      <div class="flex gap-4 p-5 bg-aobg2 border border-aoghost/10 rounded-sm hover:border-aopc/20 transition-colors ru" style="transition-delay:.08s">
+        <div class="text-aosecondary text-xl flex-shrink-0 mt-0.5">✓</div>
+        <div>
+          <div class="font-cond font-bold text-base text-aosurf mb-1">Ver como o dinheiro grande opera</div>
+          <div class="text-aomuted text-sm leading-relaxed">Volume, pressão e fluxo — explicados em gráfico real, sem indicador, sem enrolação.</div>
+        </div>
+      </div>
+      <div class="flex gap-4 p-5 bg-aobg2 border border-aoghost/10 rounded-sm hover:border-aopc/20 transition-colors ru" style="transition-delay:.12s">
+        <div class="text-aosecondary text-xl flex-shrink-0 mt-0.5">✓</div>
+        <div>
+          <div class="font-cond font-bold text-base text-aosurf mb-1">Ver o JR ORÁCULO ao vivo pela 1ª vez</div>
+          <div class="text-aomuted text-sm leading-relaxed">Demo em operação real — você vê o clone da minha leitura funcionando na prática.</div>
+        </div>
+      </div>
+      <div class="flex gap-4 p-5 bg-aobg2 border border-aoghost/10 rounded-sm hover:border-aopc/20 transition-colors ru" style="transition-delay:.16s">
+        <div class="text-aosecondary text-xl flex-shrink-0 mt-0.5">✓</div>
+        <div>
+          <div class="font-cond font-bold text-base text-aosurf mb-1">Ter acesso à oferta da live</div>
+          <div class="text-aomuted text-sm leading-relaxed">Preço simbólico revelado ao vivo. Só existe enquanto a live estiver no ar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOTES -->
+<section id="lotes" class="py-20 px-4 md:px-8 bg-aobg2 relative z-10">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 ru">
+      <div class="font-mono text-[9px] tracking-[.5em] text-aopc uppercase mb-3">INGRESSOS DO EVENTO</div>
+      <h2 class="font-hl text-[clamp(40px,7vw,76px)] leading-none mb-5">GARANTA<br><span class="text-aopc">SEU ACESSO</span></h2>
+      <p class="font-cond font-light text-lg text-aomuted tracking-[.04em] mb-5">Este é um evento fechado. Apenas quem garantiu o ingresso tem acesso à live, ao grupo exclusivo e à oferta do ORÁCULO.</p>
+      <div class="inline-flex items-center gap-3 px-4 py-2 bg-aoerc/15 border border-aoerr/25 rounded-sm">
+        <span class="mat-fill text-aoerr text-base">emergency</span>
+        <span class="font-mono text-[9px] tracking-[.15em] text-aoerr font-bold uppercase">Lote 1 Esgotado — 50 ingressos vendidos</span>
+      </div>
+    </div>
+    <div class="lotes-grid grid grid-cols-1 lg:grid-cols-3 gap-5 items-start">
+      <!-- LOTE 1 ESGOTADO -->
+      <div class="bg-aobg opacity-50 p-7 rounded-sm border border-aoghost/10 flex flex-col relative overflow-hidden ru" style="transition-delay:.04s">
+        <div class="absolute top-0 right-0 overflow-hidden w-20 h-20"><div class="absolute top-5 right-[-20px] bg-aoerr text-aobg font-mono text-[8px] tracking-[.1em] px-6 py-0.5 rotate-45">ESGOTADO</div></div>
+        <div class="font-mono text-[8px] tracking-[.35em] text-aoghost uppercase mb-2">LOTE 01</div>
+        <div class="font-hl text-3xl mb-4">EARLY BIRD</div>
+        <div class="mb-5"><div class="flex items-baseline gap-1"><span class="text-aomuted text-sm">R$</span><span class="font-hl text-5xl text-aomuted">17</span></div><div class="font-mono text-[8px] text-aoghost tracking-[.2em] mt-1">50 INGRESSOS · ESGOTADO</div></div>
+        <div class="mb-5"><div class="flex justify-between font-mono text-[8px] text-aoghost mb-1"><span>VAGAS</span><span>100%</span></div><div class="h-1 bg-aobg4 rounded-full overflow-hidden"><div class="h-full bg-aoghost/40 w-full"></div></div></div>
+        <ul class="flex-1 space-y-2 mb-5">
+          <li class="flex gap-2 text-xs text-aoghost"><span class="mat-icon text-aoghost text-sm">check_circle</span>Ingresso ao evento</li>
+          <li class="flex gap-2 text-xs text-aoghost"><span class="mat-icon text-aoghost text-sm">check_circle</span>Grupo fechado</li>
+          <li class="flex gap-2 text-xs text-aoghost"><span class="mat-icon text-aoghost text-sm">check_circle</span>Oferta da live</li>
+        </ul>
+        <button disabled class="w-full py-3 bg-aobg4 text-aoghost font-cond font-bold text-sm uppercase tracking-[.1em] rounded-sm cursor-not-allowed">ESGOTADO</button>
+      </div>
+      <!-- LOTE 2 DESTAQUE -->
+      <div class="lote-destaque bg-aobg5 p-7 rounded-sm border-2 border-aopc flex flex-col lg:scale-105 glow-c bpulse relative overflow-hidden ru" style="transition-delay:.08s">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-aopc to-transparent"></div>
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-aopc text-aobg font-mono text-[9px] font-bold uppercase tracking-[.1em] px-3 py-1 rounded-full whitespace-nowrap">MAIS ESCOLHIDO</div>
+        <div class="font-mono text-[8px] tracking-[.35em] text-aoprimary uppercase mb-2 mt-4">LOTE 02 · DUPLO</div>
+        <div class="font-hl text-3xl text-aopc mb-1">DUPLO</div>
+        <div class="font-mono text-[8px] tracking-[.1em] text-aosecondary mb-4 flex items-center gap-1"><span class="mat-icon text-aosecondary text-xs">group</span>VOCÊ + 1 AMIGO · 2 ACESSOS</div>
+        <div class="mb-5"><div class="flex items-baseline gap-1"><span class="text-aomuted text-sm">R$</span><span class="font-hl text-5xl text-aosurf">27</span></div><div class="font-mono text-[8px] text-aoghost tracking-[.2em] mt-1">LOTE ATUAL</div></div>
+        <div class="mb-5">
+          <div class="flex justify-between font-mono text-[8px] text-aoghost mb-1"><span>VAGAS</span><span id="bar-pct2">76%</span></div>
+          <div class="h-1 bg-aobg3 rounded-full overflow-hidden"><div class="h-full rounded-full bfill" id="bar2" style="--w:76%;background:linear-gradient(to right,#00e0ff,#00d384)"></div></div>
+          <div class="font-mono text-[9px] text-aopc mt-1.5 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-aopc op"></span><span id="vagas2">12</span> VAGAS RESTANTES</div>
+        </div>
+        <ul class="flex-1 space-y-2 mb-6">
+          <li class="flex gap-2 text-sm text-aosurf"><span class="mat-fill text-aopc text-sm">check_circle</span>Ingresso ao evento</li>
+          <li class="flex gap-2 text-sm text-aosurf"><span class="mat-fill text-aopc text-sm">check_circle</span><strong>2 acessos — presenteia um amigo</strong></li>
+          <li class="flex gap-2 text-sm text-aosurf"><span class="mat-fill text-aopc text-sm">check_circle</span>Grupo fechado do evento</li>
+          <li class="flex gap-2 text-sm text-aosurf"><span class="mat-fill text-aopc text-sm">check_circle</span>Oferta exclusiva da live</li>
+          <li class="flex gap-2 text-sm text-aosurf"><span class="mat-fill text-aopc text-sm">check_circle</span>Avisos e atualizações JR</li>
+        </ul>
+        <button data-action="buy" data-tier="duplo" class="relative overflow-hidden w-full py-4 bg-aopc text-aobg font-cond font-bold text-base uppercase tracking-[.1em] rounded-sm hover:brightness-110 active:scale-95 transition-all rpl">GARANTIR ACESSO →</button>
+      </div>
+      <!-- LOTE VIP -->
+      <div class="bg-aobg p-7 rounded-sm border border-aotc/25 flex flex-col ru glow-gold" style="transition-delay:.12s">
+        <div class="font-mono text-[8px] tracking-[.35em] text-aotc uppercase mb-2">LOTE 03 · VIP</div>
+        <div class="font-hl text-3xl text-aotertiary mb-4">VIP</div>
+        <div class="mb-5"><div class="flex items-baseline gap-1"><span class="text-aomuted text-sm">R$</span><span class="font-hl text-5xl text-aosurf">47</span></div><div class="font-mono text-[8px] text-aoghost tracking-[.2em] mt-1">ACESSO COMPLETO</div></div>
+        <div class="mb-5">
+          <div class="flex justify-between font-mono text-[8px] text-aoghost mb-1"><span>VAGAS VIP</span><span>40%</span></div>
+          <div class="h-1 bg-aobg4 rounded-full overflow-hidden"><div class="h-full rounded-full bfill" style="--w:40%;background:linear-gradient(to right,rgba(255,193,101,.6),#ffc165)"></div></div>
+          <div class="font-mono text-[9px] text-aotc mt-1.5"><span id="vagasVip">20</span> vagas VIP</div>
+        </div>
+        <ul class="flex-1 space-y-2 mb-6">
+          <li class="flex gap-2 text-sm text-aomuted"><span class="mat-fill text-aotc text-sm">verified</span>Ingresso ao evento</li>
+          <li class="flex gap-2 text-sm text-aomuted"><span class="mat-fill text-aotc text-sm">verified</span><strong class="text-aosurf">Grupo VIP exclusivo com o JR</strong></li>
+          <li class="flex gap-2 text-sm text-aomuted"><span class="mat-fill text-aotc text-sm">verified</span>Oferta exclusiva da live</li>
+          <li class="flex gap-2 text-sm text-aomuted"><span class="mat-fill text-aotc text-sm">verified</span>Replay exclusivo do evento</li>
+          <li class="flex gap-2 text-sm text-aomuted"><span class="mat-fill text-aotc text-sm">verified</span>Acesso antecipado a novidades</li>
+        </ul>
+        <button data-action="buy" data-tier="vip" class="w-full py-3 bg-aotc/10 border border-aotc/30 text-aotc font-cond font-bold text-sm uppercase tracking-[.1em] rounded-sm hover:bg-aotc/20 active:scale-95 transition-all rpl">QUERO O VIP →</button>
+      </div>
+    </div>
+    <div class="text-center mt-5 font-mono text-[9px] text-aoghost tracking-[.18em]">🔒 PAGAMENTO SEGURO &nbsp;·&nbsp; ✓ GARANTIA 7 DIAS &nbsp;·&nbsp; ✓ ACESSO IMEDIATO AO GRUPO</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-20 px-4 bg-aobg relative z-10 max-w-2xl mx-auto w-full">
+  <div class="text-center mb-12 ru">
+    <div class="font-mono text-[9px] tracking-[.5em] text-aopc uppercase mb-3">DÚVIDAS</div>
+    <h2 class="font-hl text-[clamp(38px,6vw,66px)] leading-none">PERGUNTAS<br><span class="text-aopc">FREQUENTES</span></h2>
+  </div>
+  <div class="space-y-2 ru">
+    <div class="faq-item border border-aoghost/15 rounded-sm overflow-hidden">
+      <button class="faq-q w-full flex justify-between items-center px-5 py-4 text-left text-sm font-medium hover:text-aoprimary transition-colors gap-3">Quem pode assistir a live?<span class="font-hl text-xl text-aopc flex-shrink-0 faq-ico transition-transform">+</span></button>
+      <div class="faq-a max-h-0 overflow-hidden transition-[max-height] duration-300"><div class="px-5 pb-4 text-sm text-aomuted leading-[1.8]">A live é um evento fechado — apenas quem comprou o ingresso tem acesso. O ingresso garante o link da live, entrada no grupo exclusivo e a oferta do ORÁCULO durante o evento. VIP também recebe replay.</div></div>
+    </div>
+    <div class="faq-item border border-aoghost/15 rounded-sm overflow-hidden">
+      <button class="faq-q w-full flex justify-between items-center px-5 py-4 text-left text-sm font-medium hover:text-aoprimary transition-colors gap-3">O que é o JR ORÁCULO que vai ser apresentado?<span class="font-hl text-xl text-aopc flex-shrink-0 faq-ico transition-transform">+</span></button>
+      <div class="faq-a max-h-0 overflow-hidden transition-[max-height] duration-300"><div class="px-5 pb-4 text-sm text-aomuted leading-[1.8]">Uma extensão Chrome que encapsula meu processo de leitura de mercado. Lê contexto, pressão e fluxo e entrega o veredicto em segundos. Apresentado ao vivo pela primeira vez nessa noite.</div></div>
+    </div>
+    <div class="faq-item border border-aoghost/15 rounded-sm overflow-hidden">
+      <button class="faq-q w-full flex justify-between items-center px-5 py-4 text-left text-sm font-medium hover:text-aoprimary transition-colors gap-3">Qual a diferença entre o ingresso Duplo e o VIP?<span class="font-hl text-xl text-aopc flex-shrink-0 faq-ico transition-transform">+</span></button>
+      <div class="faq-a max-h-0 overflow-hidden transition-[max-height] duration-300"><div class="px-5 pb-4 text-sm text-aomuted leading-[1.8]">Duplo = você + 1 amigo no mesmo grupo. VIP = grupo separado e exclusivo com acesso direto ao JR, replay do evento e acesso antecipado ao ORÁCULO.</div></div>
+    </div>
+    <div class="faq-item border border-aoghost/15 rounded-sm overflow-hidden">
+      <button class="faq-q w-full flex justify-between items-center px-5 py-4 text-left text-sm font-medium hover:text-aoprimary transition-colors gap-3">Qual o preço do ORÁCULO na live?<span class="font-hl text-xl text-aopc flex-shrink-0 faq-ico transition-transform">+</span></button>
+      <div class="faq-a max-h-0 overflow-hidden transition-[max-height] duration-300"><div class="px-5 pb-4 text-sm text-aomuted leading-[1.8]">Revelado ao vivo. Preço simbólico — exclusivo para quem estiver presente. Quando a live terminar, fecha. Sem previsão de nova oferta a esse preço.</div></div>
+    </div>
+    <div class="faq-item border border-aoghost/15 rounded-sm overflow-hidden">
+      <button class="faq-q w-full flex justify-between items-center px-5 py-4 text-left text-sm font-medium hover:text-aoprimary transition-colors gap-3">Tem garantia?<span class="font-hl text-xl text-aopc flex-shrink-0 faq-ico transition-transform">+</span></button>
+      <div class="faq-a max-h-0 overflow-hidden transition-[max-height] duration-300"><div class="px-5 pb-4 text-sm text-aomuted leading-[1.8]">Sim. 7 dias de garantia incondicional no ingresso. Se por qualquer motivo não curtir, devolvo 100% sem perguntas.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="py-24 px-5 text-center relative overflow-hidden z-10">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_80%,rgba(0,224,255,.07),transparent)] pointer-events-none"></div>
+  <div class="relative z-10 ru">
+    <div class="font-mono text-[9px] tracking-[.5em] text-aopc uppercase mb-6">UMA NOITE. UMA DECISÃO.</div>
+    <h2 class="font-hl leading-none mb-5">
+      <span class="block text-[clamp(48px,9vw,108px)] text-aosurf">22 DE ABRIL</span>
+      <span class="block text-[clamp(56px,10vw,120px)] text-aopc">21H</span>
+    </h2>
+    <p class="font-cond font-light text-xl text-aomuted tracking-[.06em] max-w-md mx-auto mb-4">Este evento é fechado. <strong class="text-aosurf">Apenas quem garantiu o ingresso vai estar dentro.</strong></p>
+    <div class="flex flex-wrap gap-2 justify-center mb-8">
+      <div class="proof-pill"><span class="text-aosecondary text-sm">✓</span><span class="font-mono text-[9px] text-aosecondary tracking-[.1em]">50 pessoas já garantiram</span></div>
+      <div class="proof-pill"><span class="text-aosecondary text-sm">✓</span><span class="font-mono text-[9px] text-aosecondary tracking-[.1em]">Lote 1 esgotado</span></div>
+      <div class="proof-pill"><span class="text-aosecondary text-sm">✓</span><span class="font-mono text-[9px] text-aosecondary tracking-[.1em]">12 vagas no Lote 2</span></div>
+    </div>
+    <button data-action="scroll" data-target="lotes" class="relative overflow-hidden px-14 py-5 bg-aopc text-aobg font-hl text-[clamp(20px,3vw,26px)] tracking-[.06em] rounded-sm glow-c hover:brightness-110 active:scale-95 transition-all rpl">GARANTIR MINHA VAGA →</button>
+    <div class="font-mono text-[9px] text-aoghost tracking-[.18em] mt-4">🔒 GARANTIA 7 DIAS · PAGAMENTO SEGURO · ACESSO IMEDIATO</div>
+  </div>
+</section>
+
+<footer class="bg-aobg2 border-t border-aoghost/10 md:pb-8 pb-20 py-8 px-5 flex flex-wrap justify-between items-center gap-4 relative z-10">
+  <div class="font-hl text-lg tracking-[.06em]">FIM DAS <span class="text-aopc">OB</span></div>
+  <div class="flex gap-5"><a href="#faq" class="font-mono text-[9px] text-aoghost tracking-[.14em] hover:text-aomuted transition-colors">FAQ</a><a href="mailto:contato@jovemrico.com" class="font-mono text-[9px] text-aoghost tracking-[.14em] hover:text-aomuted transition-colors">SUPORTE</a></div>
+  <div class="font-mono text-[9px] text-aoghost/50 tracking-[.08em]">© 2026 JR TRADER · 29 ABRIL 2026</div>
+</footer>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center bg-aobg2 border-t border-aoghost/15 shadow-[0_-4px_20px_rgba(0,0,0,.5)]" style="min-height:56px">
+  <button data-action="scroll" data-target="noite" class="flex flex-col items-center text-aoghost hover:text-aopc transition-colors px-3 py-2"><span class="mat-icon text-xl">menu_book</span><span class="font-mono text-[8px] mt-0.5">História</span></button>
+  <button data-action="scroll" data-target="atos" class="flex flex-col items-center text-aoghost hover:text-aopc transition-colors px-3 py-2"><span class="mat-icon text-xl">event</span><span class="font-mono text-[8px] mt-0.5">Atos</span></button>
+  <button data-action="scroll" data-target="lotes" class="flex flex-col items-center text-aopc px-3 py-2"><span class="mat-icon text-xl">confirmation_number</span><span class="font-mono text-[8px] mt-0.5">Ingressos</span></button>
+  <button data-action="scroll" data-target="faq" class="flex flex-col items-center text-aoghost hover:text-aopc transition-colors px-3 py-2"><span class="mat-icon text-xl">help</span><span class="font-mono text-[8px] mt-0.5">FAQ</span></button>
+</nav>
+
+<script>
+// CURSOR
+const _c=document.getElementById('cur'),_c2=document.getElementById('cur2');
+let mx=0,my=0,cx=0,cy=0;
+if(window.matchMedia('(hover:hover)').matches){
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;_c.style.left=mx+'px';_c.style.top=my+'px';});
+  setInterval(()=>{cx+=(mx-cx)*.15;cy+=(my-cy)*.15;_c2.style.left=cx+'px';_c2.style.top=cy+'px';},16);
+}
+function jrScrollTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'});}
+
+// COUNTDOWN
+const TGT=new Date('2026-04-29T21:00:00-03:00');
+function upCD(){
+  const d=TGT-new Date();
+  if(d<=0){['cd-d','cd-h','cd-m','cd-sec'].forEach(i=>document.getElementById(i).textContent='00');return;}
+  const p=n=>String(Math.floor(n)).padStart(2,'0');
+  document.getElementById('cd-d').textContent=p(d/864e5);
+  document.getElementById('cd-h').textContent=p((d%864e5)/36e5);
+  document.getElementById('cd-m').textContent=p((d%36e5)/6e4);
+  document.getElementById('cd-sec').textContent=p((d%6e4)/1e3);
+}
+upCD();setInterval(upCD,1000);
+
+// VAGAS
+const V2=12,VV=20;
+document.getElementById('vagas2').textContent=V2;
+document.getElementById('vagasVip').textContent=VV;
+document.getElementById('xp-vagas').textContent=V2;
+const pct2=Math.round((1-V2/50)*100);
+document.getElementById('bar-pct2').textContent=pct2+'%';
+document.getElementById('bar2').style.setProperty('--w',pct2+'%');
+
+// SCROLL REVEAL
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.08});
+document.querySelectorAll('.ru').forEach(el=>ro.observe(el));
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item'),open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>{
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight='0';
+      const ic=i.querySelector('.faq-ico');if(ic)ic.style.transform='';
+    });
+    if(!open){
+      item.classList.add('open');
+      const a=item.querySelector('.faq-a');a.style.maxHeight=a.scrollHeight+'px';
+      const ic=btn.querySelector('.faq-ico');if(ic)ic.style.transform='rotate(45deg)';
+    }
+  });
+});
+
+// RIPPLE
+document.querySelectorAll('.rpl,button').forEach(b=>{
+  if(b.classList.contains('_rpl'))return;b.classList.add('_rpl');
+  b.style.position='relative';b.style.overflow='hidden';
+  b.addEventListener('click',e=>{
+    const r=document.createElement('span'),rc=b.getBoundingClientRect();
+    r.style.cssText=`position:absolute;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.18);animation:ripple .5s linear;left:${e.clientX-rc.left-10}px;top:${e.clientY-rc.top-10}px;pointer-events:none`;
+    b.appendChild(r);setTimeout(()=>r.remove(),500);
+  });
+});
+
+// BUY
+function handleBuy(btn,tier){
+  const urls={duplo:'https://pay.cakto.com.br/36e62hm_839322',vip:'https://pay.cakto.com.br/i8ffwh9'};
+  const d=urls[tier];
+  if(d&&d!=='#'){window.location.href=d;}else{showToast('Link disponível na live 29/04 🔒');}
+}
+function showToast(msg){
+  const t=document.createElement('div');
+  t.textContent=msg;
+  t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(11,14,25,.97);border:1px solid rgba(0,224,255,.25);color:#e0e1f3;padding:10px 22px;border-radius:2px;font-size:11px;font-family:Share Tech Mono,monospace;z-index:999;white-space:nowrap;pointer-events:none;letter-spacing:.04em';
+  document.body.appendChild(t);setTimeout(()=>t.remove(),3500);
+}
+
+// EXIT POPUP
+let _shown=false;
+document.addEventListener('mouseleave',e=>{if(e.clientY<=0&&!_shown){_shown=true;document.getElementById('xpop').style.display='flex';}});
+setTimeout(()=>{if(!_shown){_shown=true;document.getElementById('xpop').style.display='flex';}},60000);
+function closeXP(){document.getElementById('xpop').style.display='none';}
+</script>
+
+<script>
+// ── SES-SAFE EVENT WIRING ──
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('click', function(e) {
+    const el = e.target.closest('[data-action]');
+    if (!el) return;
+    const action = el.dataset.action;
+    const target = el.dataset.target;
+    const tier   = el.dataset.tier;
+    if (action === 'scroll')        { jrScrollTo(target); }
+    if (action === 'buy')           { handleBuy(el, tier); }
+    if (action === 'close-xp')      { closeXP(); }
+    if (action === 'close-scroll')  { closeXP(); jrScrollTo(target); }
+  });
+});
+</script>
+</body>
+</html>
