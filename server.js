@@ -53,10 +53,15 @@ function notifyQuartel(nome, email, telefone) {
     const body = JSON.stringify({ nome, email, telefone, fonte: 'leadlovers' });
     const u = new URL(QUARTEL_URL + '/webhook/leadlovers');
     const lib = u.protocol === 'https:' ? require('https') : require('http');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Content-Length': Buffer.byteLength(body)
+    };
+    // V6: Quartel V21 exige x-webhook-secret (fail-closed)
+    if (process.env.WEBHOOK_SECRET) headers['x-webhook-secret'] = process.env.WEBHOOK_SECRET;
     const r = lib.request(
       { hostname: u.hostname, port: u.port || (u.protocol==='https:'?443:80),
-        path: u.pathname, method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) } },
+        path: u.pathname, method: 'POST', headers },
       s => { s.on('data', () => {}); s.on('end', () => {}); }
     );
     r.on('error', () => {});
