@@ -430,6 +430,14 @@ document.addEventListener('visibilitychange',function(){
       sessionStorage.setItem('jr_tel', telefone.replace(/\D/g,''));
     } catch(e){}
 
+    // Notifica servidor (que repassa ao Quartel) — server-side, mais confiável que client
+    fetch('/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, email, telefone }),
+      keepalive: true
+    }).catch(function(){});
+
     setTimeout(function() { window.location.href = '/obrigado'; }, 900);
   };
 })();
