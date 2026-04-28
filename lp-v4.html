@@ -279,7 +279,7 @@ document.addEventListener('visibilitychange',function(){
 });
 // COUNTDOWN
 (function(){
-  var t=new Date('2026-04-01T00:00:00-03:00');
+  var t=new Date('2026-05-06T20:00:00-03:00');
   var els=['d','h','m','s'].map(function(id){return document.getElementById(id)});
   function upd(){
     var df=t-Date.now();
@@ -429,6 +429,10 @@ document.addEventListener('visibilitychange',function(){
       sessionStorage.setItem('jr_nome', nome);
       sessionStorage.setItem('jr_tel', telefone.replace(/\D/g,''));
     } catch(e){}
+    // V34: Meta Pixel Lead event + TikTok/GA
+    try { if (window.fbq) fbq('track','Lead',{content_name:'JR INDEX'}); } catch(e){}
+    try { if (window.ttq) ttq.track('SubmitForm'); } catch(e){}
+    try { if (window.gtag) gtag('event','generate_lead',{event_category:'capture'}); } catch(e){}
 
     // Notifica servidor (que repassa ao Quartel) — server-side, mais confiável que client
     fetch('/lead', {

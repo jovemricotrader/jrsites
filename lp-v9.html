@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<title>Relatório Técnico: JR INDEX</title>
+<meta name="description" content="Whitepaper técnico sobre o indicador JR INDEX — leitura de preço e volume em opções binárias.">
+<meta name="ab-variant" content="v9-whitepaper">
+<meta name="theme-color" content="#fafaf7">
+<link rel="icon" href="/foto.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#fafaf7;--paper:#fff;--ink:#1a1a1a;--mute:#5a5a5a;--line:#d4d4d0;
+  --accent:#8b0000;--hl:#f5e6a8;
+  --serif:'IBM Plex Serif',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+.doc{max-width:760px;margin:0 auto;background:var(--paper);padding:64px 72px 48px;box-shadow:0 1px 3px rgba(0,0,0,.06);min-height:100vh}
+
+/* Header do documento */
+.dhead{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:32px;display:flex;justify-content:space-between;align-items:flex-end}
+.dhead-l{font-family:var(--mono);font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.12em}
+.dhead-r{font-family:var(--mono);font-size:11px;color:var(--mute)}
+.dnum{font-weight:500;color:var(--ink)}
+
+/* Document title */
+.dtype{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;font-weight:500}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5vw,48px);line-height:1.15;margin-bottom:16px;letter-spacing:-.01em}
+.subtitle{font-family:var(--serif);font-style:italic;font-size:clamp(16px,2.4vw,20px);color:var(--mute);margin-bottom:36px;line-height:1.5}
+
+/* Abstract */
+.abstract{background:#f3efe8;border-left:3px solid var(--accent);padding:20px 24px;margin:24px 0 36px;font-size:14px;color:#3a3a3a}
+.abstract-h{font-family:var(--sans);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.15em;margin-bottom:8px;color:var(--accent)}
+
+/* Metadata box */
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);margin:32px 0;font-family:var(--mono);font-size:11px}
+.m-c{padding:14px 16px;border-right:1px solid var(--line)}
+.m-c:last-child{border-right:0}
+.m-l{color:var(--mute);text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px;font-size:10px}
+.m-v{color:var(--ink);font-weight:500;font-size:13px}
+
+/* Seções */
+section{margin:40px 0}
+.snum{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:500;margin-bottom:6px;letter-spacing:.1em}
+h2{font-family:var(--serif);font-weight:600;font-size:24px;margin-bottom:16px;line-height:1.3;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h3{font-family:var(--sans);font-weight:600;font-size:14px;margin:24px 0 8px;letter-spacing:.02em;text-transform:uppercase;color:var(--accent)}
+p{margin-bottom:14px;font-size:15px;color:#2a2a2a}
+p .hl{background:var(--hl);padding:1px 4px;color:var(--ink)}
+p .em{font-style:italic;color:var(--ink);font-weight:500}
+
+/* Lista numerada */
+ol.num{list-style:none;counter-reset:item;margin:16px 0 16px 20px}
+ol.num li{counter-increment:item;padding:10px 0 10px 36px;position:relative;font-size:14px;border-bottom:1px dashed var(--line)}
+ol.num li::before{content:counter(item,decimal-leading-zero);position:absolute;left:0;top:12px;font-family:var(--mono);font-weight:600;color:var(--accent);font-size:12px}
+ol.num li:last-child{border-bottom:0}
+
+/* Chart mockup (estilo relatório) */
+.chart{margin:28px 0;border:1px solid var(--line);padding:20px;background:#fcfcfa}
+.chart-h{font-family:var(--mono);font-size:10px;color:var(--mute);text-transform:uppercase;letter-spacing:.15em;margin-bottom:16px;display:flex;justify-content:space-between}
+.chart-svg{width:100%;height:160px;display:block}
+
+/* Countdown no estilo métrica */
+.metric{margin:40px 0;padding:28px;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);color:#fff;border-radius:3px}
+.metric-h{font-family:var(--mono);font-size:10px;color:#aaa;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+.cd-c{border-right:1px solid rgba(255,255,255,.1);padding:0 8px}
+.cd-c:last-child{border-right:0}
+.cd-n{font-family:var(--serif);font-weight:500;font-size:36px;line-height:1;color:var(--hl)}
+.cd-l{font-family:var(--mono);font-size:9px;color:#999;margin-top:6px;letter-spacing:.2em;text-transform:uppercase}
+
+/* Blockquote */
+blockquote{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.5;padding:20px 0 20px 24px;border-left:3px solid var(--accent);margin:24px 0;color:#333}
+.cite{font-family:var(--sans);font-style:normal;font-size:11px;color:var(--mute);margin-top:10px;letter-spacing:.1em;text-transform:uppercase}
+
+/* CTA / Form */
+.cta{margin:48px -72px -48px;padding:40px 72px;background:#1a1a1a;color:#fff}
+@media(max-width:700px){ .cta{margin:32px -24px -32px;padding:32px 24px} }
+.cta-h{font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:8px;line-height:1.3}
+.cta-s{font-family:var(--sans);font-size:13px;color:#aaa;margin-bottom:24px}
+.form{max-width:420px}
+.inp{width:100%;padding:13px 14px;background:#2a2a2a;color:#fff;border:1px solid #3a3a3a;font-family:var(--sans);font-size:14px;margin-bottom:10px;outline:none;border-radius:2px}
+.inp::placeholder{color:#888}
+.inp:focus{border-color:var(--hl);background:#252525}
+.btn{width:100%;margin-top:12px;padding:16px;background:var(--hl);color:#1a1a1a;border:0;font-family:var(--sans);font-weight:600;font-size:13px;cursor:pointer;letter-spacing:.05em;border-radius:2px;transition:all .2s}
+.btn:hover{background:#ead28a}
+.err{display:none;background:#3a2020;border:1px solid #6a3030;color:#fcc;font-size:12px;padding:10px;margin:8px 0;border-radius:2px}
+.fine{font-family:var(--mono);font-size:10px;color:#888;margin-top:14px;letter-spacing:.1em;text-transform:uppercase}
+
+/* Footer */
+.dfoot{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--mute);display:flex;justify-content:space-between;text-transform:uppercase;letter-spacing:.1em}
+
+@media(max-width:720px){
+  .doc{padding:32px 24px}
+  .meta{grid-template-columns:repeat(2,1fr)}
+  .m-c{border-right:1px solid var(--line)}
+  .m-c:nth-child(2n){border-right:0}
+  .m-c:nth-child(1),.m-c:nth-child(2){border-bottom:1px solid var(--line)}
+  .cd-n{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<article class="doc">
+  <header class="dhead">
+    <div class="dhead-l">Documento Técnico · <span class="dnum">JR-INDEX / Rev 2.6</span></div>
+    <div class="dhead-r">Pág. 01</div>
+  </header>
+
+  <div class="dtype">Relatório de Sistema · Pré-Lançamento</div>
+  <h1>JR INDEX: Leitura Estrutural de Mercado em Opções Binárias</h1>
+  <p class="subtitle">Um framework de identificação de zonas de reação baseado em confluência de preço e volume, calibrado para intervalos M15, M30 e H1.</p>
+
+  <div class="abstract">
+    <div class="abstract-h">Resumo</div>
+    Este documento apresenta a especificação funcional do indicador JR INDEX, desenvolvido para traders de opções binárias. O sistema não opera por sinais automáticos ou replicação de estratégias, mas identifica, via leitura combinada de preço e volume, zonas estatisticamente relevantes de reação. Liberação prevista para 06 de maio de 2026, 20h BRT.
+  </div>
+
+  <div class="meta">
+    <div class="m-c">
+      <div class="m-l">Tipo</div>
+      <div class="m-v">Indicador</div>
+    </div>
+    <div class="m-c">
+      <div class="m-l">Mercado</div>
+      <div class="m-v">OB</div>
+    </div>
+    <div class="m-c">
+      <div class="m-l">Timeframes</div>
+      <div class="m-v">M15 / M30 / H1</div>
+    </div>
+    <div class="m-c">
+      <div class="m-l">Corretora</div>
+      <div class="m-v">Quotex+</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="snum">§ 1.0</div>
+    <h2>Contexto de Mercado</h2>
+    <p>O segmento de opções binárias é dominado por ferramentas derivadas: sinais repassados, robôs sem transparência, indicadores replicados sem método. O trader médio opera com instrumentos cuja lógica não compreende, em timeframes (<span class="em">M1, M5</span>) onde o ruído de preço sobrepuja a estrutura.</p>
+    <p>O resultado é observável: <span class="hl">baixa taxa de retenção, alta rotatividade de capital, dependência de terceiros</span>. O problema não é a ferramenta. É a <span class="em">ausência de leitura estrutural</span>.</p>
+  </section>
+
+  <section>
+    <div class="snum">§ 2.0</div>
+    <h2>Especificação Técnica</h2>
+
+    <h3>2.1 Engine</h3>
+    <p>O JR INDEX combina duas dimensões de dados em confluência:</p>
+    <ol class="num">
+      <li><strong>Preço</strong> — leitura de estrutura via pontos de interesse e retrações, sem médias móveis nem osciladores.</li>
+      <li><strong>Volume</strong> — identificação de acumulação e distribuição em regiões candidatas a reação.</li>
+      <li><strong>Confluência multi-timeframe</strong> — zonas ganham peso quando reconhecidas em M15, M30 e H1 simultaneamente.</li>
+    </ol>
+
+    <h3>2.2 Timeframes Calibrados</h3>
+    <p>O sistema é ineficaz em intervalos curtos (M1, M5) onde predominam ruído, notícia e atividade de bancas. A calibração exclusiva para <span class="em">M15 em diante</span> é decisão de engenharia: só nessas escalas o preço respeita zonas de volume com consistência estatística.</p>
+
+    <div class="chart">
+      <div class="chart-h"><span>FIG. 01 — Confluência de zonas (simulação)</span><span>M15 · M30 · H1</span></div>
+      <svg class="chart-svg" viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="35" height="20" patternUnits="userSpaceOnUse"><path d="M 35 0 L 0 0 0 20" fill="none" stroke="#e6e6e0" stroke-width=".5"/></pattern>
+        </defs>
+        <rect width="700" height="160" fill="url(#grid)"/>
+        <!-- Zonas de reação (destacadas) -->
+        <rect x="180" y="40" width="60" height="80" fill="rgba(139,0,0,.08)" stroke="rgba(139,0,0,.4)" stroke-width=".8" stroke-dasharray="3,2"/>
+        <rect x="420" y="60" width="50" height="60" fill="rgba(139,0,0,.08)" stroke="rgba(139,0,0,.4)" stroke-width=".8" stroke-dasharray="3,2"/>
+        <!-- Path price -->
+        <path d="M 0,80 Q 50,60 100,70 T 200,85 T 280,100 T 380,75 T 460,95 T 560,80 T 700,90" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
+        <!-- Volume bars -->
+        <g fill="rgba(26,26,26,.25)">
+          <rect x="30" y="145" width="3" height="8"/><rect x="60" y="140" width="3" height="13"/><rect x="90" y="138" width="3" height="15"/>
+          <rect x="120" y="130" width="3" height="23"/><rect x="150" y="135" width="3" height="18"/>
+          <rect x="180" y="122" width="3" height="31"/><rect x="210" y="118" width="3" height="35"/><rect x="240" y="128" width="3" height="25"/>
+          <rect x="270" y="140" width="3" height="13"/><rect x="300" y="143" width="3" height="10"/>
+          <rect x="420" y="125" width="3" height="28"/><rect x="450" y="120" width="3" height="33"/><rect x="480" y="130" width="3" height="23"/>
+          <rect x="510" y="140" width="3" height="13"/><rect x="550" y="142" width="3" height="11"/><rect x="600" y="145" width="3" height="8"/>
+        </g>
+        <!-- Labels zones -->
+        <text x="210" y="35" font-family="IBM Plex Mono" font-size="9" fill="#8b0000">ZONA A · M15+M30+H1</text>
+        <text x="445" y="55" font-family="IBM Plex Mono" font-size="9" fill="#8b0000">ZONA B · M30+H1</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <div class="snum">§ 3.0</div>
+    <h2>Posicionamento</h2>
+    <blockquote>
+      "Não é sinal. Não é robô. Não é cópia. É um mapa de onde o mercado tende a reagir — e a decisão segue sendo tua."
+      <div class="cite">— Da especificação, linha 4</div>
+    </blockquote>
+    <p>A ferramenta é deliberadamente não-preditiva. Não gera entradas automáticas. Marca zonas candidatas e deixa ao operador a decisão final sobre entrada, timing e stop. A responsabilidade permanece com quem opera.</p>
+  </section>
+
+  <section>
+    <div class="snum">§ 4.0</div>
+    <h2>Cronograma de Liberação</h2>
+
+    <div class="metric">
+      <div class="metric-h">Release · countdown</div>
+      <div class="cd">
+        <div class="cd-c"><div class="cd-n" id="dd">00</div><div class="cd-l">Dias</div></div>
+        <div class="cd-c"><div class="cd-n" id="hh">00</div><div class="cd-l">Horas</div></div>
+        <div class="cd-c"><div class="cd-n" id="mm">00</div><div class="cd-l">Min</div></div>
+        <div class="cd-c"><div class="cd-n" id="ss">00</div><div class="cd-l">Seg</div></div>
+      </div>
+    </div>
+
+    <ol class="num">
+      <li><strong>D-7 a D-1:</strong> distribuição de documentação preparatória aos inscritos.</li>
+      <li><strong>D-0 (06/05/2026, 20h BRT):</strong> abertura do grupo de acesso e liberação técnica na Quotex.</li>
+      <li><strong>D+1 a D+14:</strong> extensão progressiva para demais corretoras (Pocket Option, Polarium, Avalon).</li>
+    </ol>
+  </section>
+
+  <div class="dfoot">
+    <span>JR-INDEX · Rev 2.6</span>
+    <span>Confidencial · Pré-Liberação</span>
+  </div>
+
+  <section class="cta">
+    <div class="cta-h">Solicitar acesso à liberação de 05/05</div>
+    <div class="cta-s">A documentação de apoio e o convite ao grupo técnico serão enviados por WhatsApp e e-mail.</div>
+    <form class="form" id="capForm" onsubmit="submitForm(event)" novalidate>
+      <input class="inp" type="text" name="nome" placeholder="Nome completo" required maxlength="80" autocomplete="given-name">
+      <input class="inp" type="email" name="email" placeholder="E-mail institucional ou pessoal" required autocomplete="email">
+      <input class="inp" type="tel" name="telefone" placeholder="WhatsApp (DDD + número)" required autocomplete="tel" maxlength="20">
+      <div class="err" id="capForm-err"></div>
+      <button type="submit" class="btn" id="mainBtn">Solicitar acesso técnico</button>
+    </form>
+    <div class="fine">Canal seguro · Sem spam · Cancelamento imediato</div>
+  </section>
+</article>
+
+<script>
+(function(){
+  var t = new Date('2026-05-06T20:00:00-03:00');
+  var elD = document.getElementById('dd'), elH = document.getElementById('hh'),
+      elM = document.getElementById('mm'), elS = document.getElementById('ss');
+  function tick(){
+    var df = t - new Date();
+    if (df <= 0){ elD.textContent='00';elH.textContent='00';elM.textContent='00';elS.textContent='00'; return; }
+    var d = Math.floor(df/86400000), h = Math.floor(df%86400000/3600000),
+        m = Math.floor(df%3600000/60000), s = Math.floor(df%60000/1000);
+    elD.textContent=String(d).padStart(2,'0'); elH.textContent=String(h).padStart(2,'0');
+    elM.textContent=String(m).padStart(2,'0'); elS.textContent=String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+})();
+
+var _submitting = false;
+window.submitForm = function(e){
+  e.preventDefault();
+  if (_submitting) return;
+  var form = e.target;
+  var nome = form.nome.value.trim(), email = form.email.value.trim(), telefone = form.telefone.value.trim();
+  var err = document.getElementById('capForm-err');
+  if (!nome || nome.length<2) { err.textContent='Nome completo é necessário.'; err.style.display='block'; return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent='E-mail inválido.'; err.style.display='block'; return; }
+  if (telefone.replace(/\D/g,'').length<10) { err.textContent='WhatsApp com DDD é obrigatório.'; err.style.display='block'; return; }
+  err.style.display='none';
+  _submitting = true;
+  document.getElementById('mainBtn').textContent = 'Processando solicitação...';
+
+  try { sessionStorage.setItem('jr_nome', nome); sessionStorage.setItem('jr_tel', telefone.replace(/\D/g,'')); } catch(e){}
+  try { if (window.fbq) fbq('track','Lead',{content_name:'JR INDEX'}); } catch(e){}
+  try { if (window.ttq) ttq.track('SubmitForm'); } catch(e){}
+  try { if (window.gtag) gtag('event','generate_lead',{event_category:'capture'}); } catch(e){}
+
+  fetch('/lead', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({nome, email, telefone, ab_visitor: window.AB_VISITOR||'', ab_slug: window.AB_SLUG||''}),
+    keepalive: true
+  }).catch(function(){});
+
+  setTimeout(function(){ window.location.href = '/obrigado'; }, 900);
+};
+</script>
+</body>
+</html>

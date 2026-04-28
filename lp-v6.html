@@ -10,7 +10,7 @@
 <meta property="og:title" content="JR INDEX — O Único Aprovado no TradingView">
 <meta property="og:description" content="Código do zero. Aprovado TradingView. Funciona em todas as corretoras de OB.">
 <meta name="theme-color" content="#04020F">
-<title>JR INDEX — Aprovado TradingView · Grátis no dia 05/05</title>
+<title>JR INDEX — Aprovado TradingView · Grátis no dia 06/05</title>
 <meta name="ab-variant" content="v6-simplicidade">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2304020F'/%3E%3Ctext x='16' y='22' font-family='Arial Black' font-size='14' font-weight='900' fill='%23F59E0B' text-anchor='middle'%3EJR%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://connect.facebook.net">
@@ -135,7 +135,7 @@ footer{border-top:1px solid rgba(124,58,237,.1);padding:clamp(18px,2.5vh,28px) v
       Quotex, Pocket Option, Vera, Tourex, Polarium.
       <strong>M15, M30, H1.</strong>
       Código original, revisado na mão pelo TradingView.
-      <span class="gd">Acesso liberado dia 5 de maio.</span>
+      <span class="gd">Acesso liberado dia 6 de maio.</span>
     </p>
     <div class="proof">APROVAÇÃO VERIFICADA · TRADINGVIEW</div>
     <div class="brokers">
@@ -280,7 +280,7 @@ document.addEventListener('visibilitychange',function(){
 });
 // COUNTDOWN
 (function(){
-  var t=new Date('2026-04-01T00:00:00-03:00');
+  var t=new Date('2026-05-06T20:00:00-03:00');
   var els=['d','h','m','s'].map(function(id){return document.getElementById(id)});
   function upd(){
     var df=t-Date.now();
@@ -430,6 +430,10 @@ document.addEventListener('visibilitychange',function(){
       sessionStorage.setItem('jr_nome', nome);
       sessionStorage.setItem('jr_tel', telefone.replace(/\D/g,''));
     } catch(e){}
+    // V34: Meta Pixel Lead event + TikTok/GA
+    try { if (window.fbq) fbq('track','Lead',{content_name:'JR INDEX'}); } catch(e){}
+    try { if (window.ttq) ttq.track('SubmitForm'); } catch(e){}
+    try { if (window.gtag) gtag('event','generate_lead',{event_category:'capture'}); } catch(e){}
 
     // Notifica servidor (que repassa ao Quartel) — server-side, mais confiável que client
     fetch('/lead', {

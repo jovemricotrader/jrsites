@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<title>JR INDEX — Indicador OB · 05/05</title>
+<meta name="description" content="Novo indicador de opções binárias. Lê preço e volume. Liberação 06/05/2026 às 20h.">
+<meta name="ab-variant" content="v7-editorial-dark">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/foto.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#000;--ink:#f4f1ea;--mute:#8a8478;--gold:#c9a84c;--line:rgba(244,241,234,.08);
+  --serif:'Cormorant Garamond',serif;--sans:'Inter',system-ui,sans-serif;
+}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,168,76,.06),transparent 60%),radial-gradient(ellipse 60% 80% at 100% 100%,rgba(201,168,76,.03),transparent 50%);pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:0 32px}
+
+/* Top */
+.top{padding:32px 0 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);letter-spacing:.2em;font-size:10px;text-transform:uppercase;color:var(--mute)}
+.top .logo{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:.15em;color:var(--gold);text-transform:none}
+
+/* Hero */
+.hero{padding:90px 0 72px;text-align:center}
+.label{font-size:10px;letter-spacing:.4em;color:var(--gold);margin-bottom:32px;text-transform:uppercase}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(36px,7vw,68px);line-height:1.1;letter-spacing:-.01em;margin-bottom:24px}
+h1 em{font-style:italic;color:var(--gold);font-weight:400}
+.lede{font-family:var(--serif);font-size:clamp(18px,3vw,24px);font-weight:400;font-style:italic;color:var(--mute);max-width:520px;margin:0 auto 48px;line-height:1.55}
+
+/* Rule */
+.rule{width:40px;height:1px;background:var(--gold);margin:48px auto}
+
+/* Counter */
+.countdown-wrap{text-align:center;padding:56px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 -32px;padding-left:32px;padding-right:32px}
+.countdown-lbl{font-size:10px;letter-spacing:.3em;color:var(--mute);margin-bottom:20px;text-transform:uppercase}
+.countdown{display:flex;justify-content:center;gap:28px;font-family:var(--serif);font-weight:500}
+.cd-cell{text-align:center}
+.cd-n{font-size:44px;line-height:1;color:var(--gold);letter-spacing:-.02em}
+.cd-l{font-size:9px;letter-spacing:.25em;color:var(--mute);text-transform:uppercase;margin-top:6px}
+
+/* Manifesto */
+.manifesto{padding:80px 0}
+.m-q{font-family:var(--serif);font-size:clamp(22px,4vw,34px);font-style:italic;font-weight:400;line-height:1.4;color:var(--ink);position:relative;padding:0 16px}
+.m-q::before{content:"“";position:absolute;top:-32px;left:-8px;font-size:96px;color:var(--gold);opacity:.4;line-height:1}
+.m-sig{margin-top:32px;font-size:10px;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
+
+/* Facts */
+.facts{padding:64px 0;border-top:1px solid var(--line)}
+.facts-h{font-size:10px;letter-spacing:.3em;color:var(--gold);margin-bottom:32px;text-transform:uppercase;text-align:center}
+.fact{padding:24px 0;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:24px}
+.fact:last-child{border:0}
+.fact-n{font-family:var(--serif);font-weight:500;font-size:48px;color:var(--gold);line-height:1;min-width:72px}
+.fact-b{flex:1}
+.fact-t{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:4px}
+.fact-d{font-size:13px;color:var(--mute);line-height:1.6}
+
+/* Form */
+.form-sect{padding:80px 0;text-align:center}
+.form-h{font-family:var(--serif);font-size:clamp(24px,4vw,36px);font-weight:500;margin-bottom:12px}
+.form-s{font-size:13px;color:var(--mute);margin-bottom:40px;max-width:400px;margin-left:auto;margin-right:auto}
+.form{max-width:400px;margin:0 auto;text-align:left}
+.inp{width:100%;padding:16px 0;background:transparent;color:var(--ink);border:0;border-bottom:1px solid var(--line);font-family:var(--sans);font-size:14px;font-weight:400;margin-bottom:8px;outline:none;transition:border-color .2s}
+.inp::placeholder{color:var(--mute);font-weight:300}
+.inp:focus{border-bottom-color:var(--gold)}
+.btn{display:block;width:100%;margin-top:32px;padding:18px;background:var(--gold);color:#000;border:0;font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:all .25s;text-align:center}
+.btn:hover{background:#d9b857;transform:translateY(-1px)}
+.err{display:none;font-size:11px;color:#f87171;margin:8px 0;letter-spacing:.05em}
+.fine{text-align:center;margin-top:16px;font-size:9px;letter-spacing:.2em;color:var(--mute);text-transform:uppercase}
+
+/* Footer */
+footer{padding:48px 0;text-align:center;border-top:1px solid var(--line);font-size:10px;color:var(--mute);letter-spacing:.15em;text-transform:uppercase}
+footer a{color:var(--gold);text-decoration:none;margin-left:8px}
+
+@media(max-width:600px){
+  .wrap{padding:0 24px}
+  .countdown{gap:16px}
+  .cd-n{font-size:32px}
+  .fact-n{font-size:36px;min-width:56px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="logo">JR·INDEX</div>
+    <div>05·05·26 · 20H</div>
+  </header>
+
+  <section class="hero">
+    <div class="label">Um novo instrumento</div>
+    <h1>Um indicador que lê <em>preço</em> e <em>volume</em>.</h1>
+    <div class="lede">
+      Enquanto o mercado segue copiando ferramentas sem lógica, construímos um sistema que observa o que realmente move as opções binárias.
+    </div>
+    <div class="rule"></div>
+
+    <div class="countdown-wrap">
+      <div class="countdown-lbl">A liberação começa em</div>
+      <div class="countdown">
+        <div class="cd-cell"><div class="cd-n" id="dd">00</div><div class="cd-l">dias</div></div>
+        <div class="cd-cell"><div class="cd-n" id="hh">00</div><div class="cd-l">horas</div></div>
+        <div class="cd-cell"><div class="cd-n" id="mm">00</div><div class="cd-l">min</div></div>
+        <div class="cd-cell"><div class="cd-n" id="ss">00</div><div class="cd-l">seg</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="manifesto">
+    <p class="m-q">Não é sinal. Não é robô. Não é cópia. É um mapa de onde o mercado tende a reagir — calibrado para M15, M30 e H1.</p>
+    <div class="m-sig">— JR Trader</div>
+  </section>
+
+  <section class="facts">
+    <div class="facts-h">O que importa saber</div>
+    <div class="fact">
+      <div class="fact-n">01</div>
+      <div class="fact-b">
+        <div class="fact-t">Preço e volume — juntos</div>
+        <div class="fact-d">O indicador lê os dois em confluência, identificando zonas de reação com método.</div>
+      </div>
+    </div>
+    <div class="fact">
+      <div class="fact-n">02</div>
+      <div class="fact-b">
+        <div class="fact-t">Calibrado para tempos maiores</div>
+        <div class="fact-d">M15, M30 e H1. Os timeframes onde o preço respeita o volume.</div>
+      </div>
+    </div>
+    <div class="fact">
+      <div class="fact-n">03</div>
+      <div class="fact-b">
+        <div class="fact-t">Quotex no dia. Resto depois.</div>
+        <div class="fact-d">Libero primeiro na Quotex. Em seguida, todas as principais corretoras.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-sect">
+    <h2 class="form-h">Entre na lista de liberação.</h2>
+    <p class="form-s">Nos próximos dias eu te mostro como funciona. No dia 06/05 às 20h, o grupo abre.</p>
+    <form class="form" id="capForm" onsubmit="submitForm(event)" novalidate>
+      <input class="inp" type="text" name="nome" placeholder="Seu nome" required autocomplete="given-name" maxlength="80">
+      <input class="inp" type="email" name="email" placeholder="Seu e-mail" required autocomplete="email">
+      <input class="inp" type="tel" name="telefone" placeholder="WhatsApp com DDD" required autocomplete="tel" maxlength="20">
+      <div class="err" id="capForm-err"></div>
+      <button type="submit" class="btn" id="mainBtn">Garantir meu acesso</button>
+    </form>
+    <div class="fine">100% gratuito · sem spam · cancele quando quiser</div>
+  </section>
+
+  <footer>
+    JR·INDEX · 2026 · Liberação 05/05 às 20h BRT
+  </footer>
+</div>
+
+<script>
+// Countdown
+(function(){
+  var t = new Date('2026-05-06T20:00:00-03:00');
+  var elD = document.getElementById('dd'), elH = document.getElementById('hh'),
+      elM = document.getElementById('mm'), elS = document.getElementById('ss');
+  function tick(){
+    var df = t - new Date();
+    if (df <= 0){ elD.textContent='00';elH.textContent='00';elM.textContent='00';elS.textContent='00'; return; }
+    var d = Math.floor(df/86400000), h = Math.floor(df%86400000/3600000),
+        m = Math.floor(df%3600000/60000), s = Math.floor(df%60000/1000);
+    elD.textContent=String(d).padStart(2,'0'); elH.textContent=String(h).padStart(2,'0');
+    elM.textContent=String(m).padStart(2,'0'); elS.textContent=String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+})();
+
+// Submit
+var _submitting = false;
+window.submitForm = function(e){
+  e.preventDefault();
+  if (_submitting) return;
+  var form = e.target;
+  var nome = form.nome.value.trim(), email = form.email.value.trim(), telefone = form.telefone.value.trim();
+  var err = document.getElementById('capForm-err');
+  if (!nome || nome.length<2) { err.textContent='Digita teu nome.'; err.style.display='block'; return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent='E-mail inválido.'; err.style.display='block'; return; }
+  if (telefone.replace(/\D/g,'').length<10) { err.textContent='WhatsApp com DDD, por favor.'; err.style.display='block'; return; }
+  err.style.display='none';
+  _submitting = true;
+  document.getElementById('mainBtn').textContent = 'Confirmando...';
+
+  try {
+    sessionStorage.setItem('jr_nome', nome);
+    sessionStorage.setItem('jr_tel', telefone.replace(/\D/g,''));
+  } catch(e){}
+  try { if (window.fbq) fbq('track','Lead',{content_name:'JR INDEX'}); } catch(e){}
+  try { if (window.ttq) ttq.track('SubmitForm'); } catch(e){}
+  try { if (window.gtag) gtag('event','generate_lead',{event_category:'capture'}); } catch(e){}
+
+  fetch('/lead', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({nome, email, telefone, ab_visitor: window.AB_VISITOR||'', ab_slug: window.AB_SLUG||''}),
+    keepalive: true
+  }).catch(function(){});
+
+  setTimeout(function(){ window.location.href = '/obrigado'; }, 900);
+};
+</script>
+</body>
+</html>
