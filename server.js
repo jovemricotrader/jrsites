@@ -226,7 +226,78 @@ gtag('js',new Date());gtag('config','${gaValid}');</script>` : '';
 }
 
 // ── ROTAS PRINCIPAIS
-app.get('/', (req, res) => serveWithVars(res, path.join(__dirname, 'index.html')));
+// V15.3 FIX: Bandit DEVE rodar nas rotas principais (não só /ir/)
+// Antes: /novoindicadorjr e / serviam SEMPRE index.html (sem A/B test)
+// Agora: chama Bandit, redireciona pra /lp/vX (sticky bucket via cookie)
+function banditRoute(slug) {
+  return (req, res) => {
+    const visitor = getOrSetVisitor(req, res);
+
+    // Sticky bucket: lê cookie jr_v_lp manualmente (sem cookie-parser)
+    const cookieHeader = req.headers.cookie || '';
+    const stickyMatch = cookieHeader.match(/(?:^|;\s*)jr_v_lp=(v(?:[1-9]|10))(?:;|$)/);
+    const stickyVar = stickyMatch ? stickyMatch[1] : '';
+
+    if (stickyVar) {
+      // Já tem variante decidida — serve direto
+      const file = `lp-${stickyVar}.html`;
+      // Track visita assíncrono
+      trackVisita(slug, stickyVar, visitor, req);
+      return serveLPFile(res, file, visitor, slug);
+    }
+
+    // Primeira visita: chama Bandit pra decidir
+    decideVariante(slug, visitor, decision => {
+      let varId = decision?.variante_id;
+      // Fallback: se Quartel offline, escolhe variante aleatória entre as 10
+      if (!varId || !/^v([1-9]|10)$/.test(varId)) {
+        const rand = Math.floor(Math.random() * 10) + 1;
+        varId = 'v' + rand;
+      }
+      // Salva cookie de variante (sticky bucket — mesma LP em visitas futuras)
+      // Set-Cookie manual (sem cookie-parser)
+      const expires = new Date(Date.now() + 30*24*3600*1000).toUTCString();
+      const existingCookies = res.getHeader('Set-Cookie') || [];
+      const newCookie = `jr_v_lp=${varId}; Expires=${expires}; Path=/; SameSite=Lax`;
+      const cookies = Array.isArray(existingCookies) ? [...existingCookies, newCookie] : [existingCookies, newCookie].filter(Boolean);
+      res.setHeader('Set-Cookie', cookies);
+
+      // Track visita
+      trackVisita(slug, varId, visitor, req);
+      // Serve a LP escolhida
+      const file = `lp-${varId}.html`;
+      serveLPFile(res, file, visitor, slug);
+    });
+  };
+}
+
+// Helper: serve LP file com vars injetadas (mesma lógica do serveLPVariant)
+function serveLPFile(res, file, visitor, slug) {
+  const fs = require('fs');
+  fs.readFile(path.join(__dirname, file), 'utf8', (err, html) => {
+    if (err) {
+      // Fallback: se arquivo não existe (ex: lp-v999.html), serve index
+      return serveWithVars(res, path.join(__dirname, 'index.html'));
+    }
+    // V15: Honeypot anti-bot
+    const hpScript = `<script>(function(){var o=window.fetch;window.fetch=function(u,p){if(typeof u==='string'&&u.indexOf('/lead')!==-1&&p&&p.body){try{var b=JSON.parse(p.body);b._website=document.getElementById('_website')?document.getElementById('_website').value:'';b._url=document.getElementById('_url')?document.getElementById('_url').value:'';b._company=document.getElementById('_company')?document.getElementById('_company').value:'';b._ts=Date.now()-(window._pageLoadTs||Date.now());p.body=JSON.stringify(b);}catch(e){}}return o(u,p);};window._pageLoadTs=Date.now();document.addEventListener('DOMContentLoaded',function(){if(document.getElementById('_hp_wrap'))return;var w=document.createElement('div');w.id='_hp_wrap';w.setAttribute('aria-hidden','true');w.style.cssText='position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden;opacity:0;pointer-events:none';w.innerHTML='<input type="text" id="_website" name="_website" tabindex="-1" autocomplete="off"><input type="text" id="_url" name="_url" tabindex="-1" autocomplete="off"><input type="text" id="_company" name="_company" tabindex="-1" autocomplete="off">';document.body.appendChild(w);});})();</script>`;
+    const inject = `<script>
+window.ZAPY_WEBHOOK=${JSON.stringify(safeUrl(ZAPY_WEBHOOK))};
+window.QUARTEL_URL=${JSON.stringify(safeUrl(QUARTEL_URL))};
+window.AB_VISITOR=${JSON.stringify(visitor)};
+window.AB_SLUG=${JSON.stringify(slug)};
+</script>${hpScript}`;
+    html = html.replace('</head>', inject + '\n</head>');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.send(html);
+  });
+}
+
+// V15.3: Rota raiz USA Bandit (antes ia direto pro index.html)
+app.get('/', banditRoute('jr-index-cap'));
 app.get('/obrigado', (req, res) => serveWithVars(res, path.join(__dirname, 'obrigado.html')));
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -309,8 +380,8 @@ app.get('/ir/:slug', (req, res) => {
     // V10: valida URL retornada pelo Quartel — defense in depth
     const rawUrl = String(decision.url || '').trim();
 
-    // URL interna: /lp/vX — whitelist absoluta
-    if (/^\/lp\/v[1-6](\?.*)?$/.test(rawUrl)) {
+    // URL interna: /lp/vX — whitelist absoluta (V15.3: v1 a v10)
+    if (/^\/lp\/v([1-9]|10)(\?.*)?$/.test(rawUrl)) {
       // Track visita async (não bloqueia redirect)
       trackVisita(slug, decision.variante_id, visitor, req);
       const qs = new URLSearchParams(req.query);
@@ -379,7 +450,8 @@ app.get('/lp/v10', serveLPVariant('lp-v10.html'));
 // ═══════════════════════════════════════════════════════════════════════════
 
 // ── FUNIL: novoindicador.jovemrico.com/novoindicadorjr → cap
-app.get('/novoindicadorjr', (req, res) => serveWithVars(res, path.join(__dirname, 'index.html')));
+// V15.3: novoindicadorjr USA Bandit (antes ia direto pro index.html)
+app.get('/novoindicadorjr', banditRoute('jr-index-cap'));
 app.get('/novoindicadorjr/', (req, res) => res.redirect(301, '/novoindicadorjr'));
 
 // ── FUNIL: VSL liberado
