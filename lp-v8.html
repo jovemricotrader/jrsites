@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
 <title>JR INDEX // Sistema de Leitura de Mercado</title>
-<meta name="description" content="Indicador OB que lê preço e volume. M15, M30, H1. 06/05/2026.">
+<meta name="description" content="Indicador OB que lê preço e volume. M15, M30, H1. 13/05/2026.">
 <meta name="ab-variant" content="v8-cyberpunk-neon">
 <meta name="theme-color" content="#00ff88">
 <link rel="icon" href="/foto.png">
@@ -107,6 +107,12 @@ footer{padding:40px 0;text-align:center;border-top:1px solid rgba(0,255,136,.1);
   h1{font-size:48px}
 }
 </style>
+<!-- Meta Pixel (hardcoded como fallback) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','410136588274309');fbq('track','PageView');fbq('track','ViewContent');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=410136588274309&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
 
@@ -134,7 +140,7 @@ footer{padding:40px 0;text-align:center;border-top:1px solid rgba(0,255,136,.1);
         <span class="t-ttl">launch.exe — countdown</span>
       </div>
       <div class="t-body">
-        <div class="t-prompt">./jr_index --countdown --target=2026-05-06T20:00:00</div>
+        <div class="t-prompt">./jr_index --countdown --target=2026-05-13T20:00:00</div>
         <div class="cd">
           <div class="cd-c"><div class="cd-n" id="dd">00</div><div class="cd-l">DAYS</div></div>
           <div class="cd-c"><div class="cd-n" id="hh">00</div><div class="cd-l">HOURS</div></div>
@@ -144,6 +150,21 @@ footer{padding:40px 0;text-align:center;border-top:1px solid rgba(0,255,136,.1);
       </div>
     </div>
   </section>
+
+<!-- VSL — adicionada em V15.5 -->
+<section style="padding:48px 0;background:rgba(0,0,0,.3);content-visibility:auto;contain-intrinsic-size:0 600px">
+  <div style="max-width:880px;margin:0 auto;padding:0 16px">
+    <div style="text-align:center;margin-bottom:24px">
+      <span style="font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#a78bfa;display:block;margin-bottom:8px">VSL · ASSISTA ANTES DE FECHAR</span>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:900;line-height:.95;letter-spacing:-.01em;color:#fff;margin:0">A HISTÓRIA POR TRÁS DO <span style="color:#fbbf24">JR INDEX</span></h2>
+    </div>
+    <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(124,58,237,.22);box-shadow:0 0 60px rgba(91,33,182,.18);background:#000;width:100%">
+      <vturb-smartplayer id="vid-69f245ce3ea7d424b0350c35" style="display:block;margin:0 auto;width:100%"></vturb-smartplayer>
+      <script src="https://scripts.converteai.net/7a2e4998-99f4-4bd7-80bc-2ba4199a25eb/players/69f245ce3ea7d424b0350c35/v4/player.js" async></script>
+    </div>
+  </div>
+</section>
+
 
   <section class="specs">
     <div class="sp-h">>>> Technical Specs</div>
@@ -193,7 +214,7 @@ footer{padding:40px 0;text-align:center;border-top:1px solid rgba(0,255,136,.1);
 
 <script>
 (function(){
-  var t = new Date('2026-05-06T20:00:00-03:00');
+  var t = new Date('2026-05-13T20:00:00-03:00');
   var elD = document.getElementById('dd'), elH = document.getElementById('hh'),
       elM = document.getElementById('mm'), elS = document.getElementById('ss');
   function tick(){

@@ -235,7 +235,7 @@ function banditRoute(slug) {
 
     // Sticky bucket: lê cookie jr_v_lp manualmente (sem cookie-parser)
     const cookieHeader = req.headers.cookie || '';
-    const stickyMatch = cookieHeader.match(/(?:^|;\s*)jr_v_lp=(v(?:[1-9]|10))(?:;|$)/);
+    const stickyMatch = cookieHeader.match(/(?:^|;\s*)jr_v_lp=(v(?:[1-9]|1[0-2]))(?:;|$)/);
     const stickyVar = stickyMatch ? stickyMatch[1] : '';
 
     if (stickyVar) {
@@ -250,8 +250,8 @@ function banditRoute(slug) {
     decideVariante(slug, visitor, decision => {
       let varId = decision?.variante_id;
       // Fallback: se Quartel offline, escolhe variante aleatória entre as 10
-      if (!varId || !/^v([1-9]|10)$/.test(varId)) {
-        const rand = Math.floor(Math.random() * 10) + 1;
+      if (!varId || !/^v([1-9]|1[0-2])$/.test(varId)) {
+        const rand = Math.floor(Math.random() * 12) + 1;
         varId = 'v' + rand;
       }
       // Salva cookie de variante (sticky bucket — mesma LP em visitas futuras)
@@ -381,7 +381,7 @@ app.get('/ir/:slug', (req, res) => {
     const rawUrl = String(decision.url || '').trim();
 
     // URL interna: /lp/vX — whitelist absoluta (V15.3: v1 a v10)
-    if (/^\/lp\/v([1-9]|10)(\?.*)?$/.test(rawUrl)) {
+    if (/^\/lp\/v([1-9]|1[0-2])(\?.*)?$/.test(rawUrl)) {
       // Track visita async (não bloqueia redirect)
       trackVisita(slug, decision.variante_id, visitor, req);
       const qs = new URLSearchParams(req.query);
@@ -446,6 +446,9 @@ app.get('/lp/v7', serveLPVariant('lp-v7.html'));
 app.get('/lp/v8', serveLPVariant('lp-v8.html'));
 app.get('/lp/v9', serveLPVariant('lp-v9.html'));
 app.get('/lp/v10', serveLPVariant('lp-v10.html'));
+// V15.5: novas LPs com VSL no topo (testar conversão)
+app.get('/lp/v11', serveLPVariant('lp-v11.html'));
+app.get('/lp/v12', serveLPVariant('lp-v12.html'));
 
 // ═══════════════════════════════════════════════════════════════════════════
 
