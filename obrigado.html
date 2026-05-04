@@ -346,6 +346,16 @@ fbq('init','410136588274309');fbq('track','PageView',{content_name:'JR INDEX',co
 fbq('track','Lead');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=410136588274309&ev=PageView&noscript=1"></noscript>
+<!-- TikTok Pixel Code (lp_variant: thanks) -->
+<script>
+!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+ttq.load('D7S3AVJC77U9UIR3KDMG');
+ttq.page();
+ttq.track('ViewContent',{content_id:'jr-index-thanks',content_name:'JR INDEX · obrigado',content_category:'thanks',content_type:'product',value:1.00,currency:'BRL'});
+ttq.track('CompleteRegistration',{content_id:'jr-index-thanks',content_name:'JR INDEX',content_category:'capture',value:1.00,currency:'BRL'});
+}(window,document,'ttq');
+</script>
+<!-- End TikTok Pixel Code -->
 <!-- End Meta Pixel -->
 </head>
 <body>
@@ -635,6 +645,14 @@ function completeStep(n) {
     if (typeof fbq === 'function') {
       fbq('trackCustom','EntrarGrupo',{lp_variant:'thanks',content_name:'JR INDEX'});
       fbq('track','CompleteRegistration',{content_name:'JR INDEX',content_ids:['jr-index-grupo'],lp_variant:'thanks',value:5.00,currency:'BRL'});
+    }
+
+    // ── TikTok Pixel — eventos espelhando Meta (V15.9)
+    if (typeof ttq !== 'undefined' && ttq.track) {
+      try {
+        ttq.track('ClickButton', {content_id:'jr-index-grupo',content_name:'JR INDEX · Entrar no Grupo',content_category:'thank_you',content_type:'product',value:5.00,currency:'BRL',lp_variant:'thanks'});
+        ttq.track('CompleteRegistration', {content_id:'jr-index-grupo',content_name:'JR INDEX',content_category:'thank_you',content_type:'product',value:5.00,currency:'BRL',lp_variant:'thanks'});
+      } catch(e) {}
     }
 
     // ── Zapy — dispara evento de engajamento (grupo) se tiver webhook configurado
