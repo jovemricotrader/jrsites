@@ -249,7 +249,7 @@ footer{border-top:1px solid rgba(124,58,237,.1);padding:clamp(18px,2.5vh,28px) v
 
 <!-- BOTTOM CTA -->
 <section class="bcta reveal">
-  <div class="bcta-tag">🔴 29 DE ABRIL · VAGAS LIMITADAS</div>
+  <div class="bcta-tag">🔴 13 DE MAIO · VAGAS LIMITADAS</div>
   <h2>ENTRA OU<br><span class="pu-big">FICA DE FORA.</span></h2>
   <p>Não tem lista de espera depois que fechar. Não tem segunda chance. Quem se cadastrar agora recebe o aviso primeiro — e entra na frente de todo mundo.</p>
   <div class="bcta-form">
@@ -435,14 +435,17 @@ document.addEventListener('visibilitychange',function(){
     // Zapy — dispara em paralelo
     zapyEnviar(nome, email, telefone);
 
-    // Salva no sessionStorage para a pg obrigado usar no evento EntrarGrupo
+    // V15.10: event_id único pra deduplicar Lead entre LP e obrigado
+    var __jrEid = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2,10);
     try {
+      sessionStorage.setItem('jr_lead_eid', __jrEid);
+      sessionStorage.setItem('jr_email', email);
       sessionStorage.setItem('jr_nome', nome);
       sessionStorage.setItem('jr_tel', telefone.replace(/\D/g,''));
     } catch(e){}
     // V34: Meta Pixel Lead event + TikTok/GA
-    try { if (window.fbq) fbq('track','Lead',{content_name:'JR INDEX',content_category:'capture',content_ids:['jr-index-v2'],lp_variant:'v2',value:1.00,currency:'BRL'}); } catch(e){}
-    try { if (window.ttq) ttq.track('SubmitForm',{content_id:'jr-index-v2',content_name:'JR INDEX',content_category:'capture',content_type:'product',value:1.00,currency:'BRL',lp_variant:'v2'}); } catch(e){}
+    try { if (window.fbq) fbq('track','Lead',{content_name:'JR INDEX',content_category:'capture',content_ids:['jr-index-v2'],lp_variant:'v2',value:1.00,currency:'BRL'}, {eventID: __jrEid}); } catch(e){}
+    try { if (window.ttq) ttq.track('SubmitForm',{content_id:'jr-index-v2',content_name:'JR INDEX',content_category:'capture',content_type:'product',value:1.00,currency:'BRL',lp_variant:'v2'}, {event_id: __jrEid}); } catch(e){}
     try { if (window.gtag) gtag('event','generate_lead',{event_category:'capture'}); } catch(e){}
 
     // Notifica servidor (que repassa ao Quartel) — server-side, mais confiável que client

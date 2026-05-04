@@ -341,18 +341,51 @@ footer p{font-size:11px;color:var(--w3);line-height:1.85;font-family:var(--mono)
 </style>
 <!-- Meta Pixel -->
 <script>
+// V15.10: lê dados da LP do sessionStorage ANTES dos pixels (advanced matching + dedup eventID)
+var __jrEmail = '', __jrNome = '', __jrTel = '', __jrLeadEid = '';
+try {
+  __jrEmail   = sessionStorage.getItem('jr_email')    || '';
+  __jrNome    = sessionStorage.getItem('jr_nome')     || '';
+  __jrTel     = sessionStorage.getItem('jr_tel')      || '';
+  __jrLeadEid = sessionStorage.getItem('jr_lead_eid') || ('lead_'+Date.now()+'_'+Math.random().toString(36).slice(2,10));
+} catch(e){}
+
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','410136588274309');fbq('track','PageView',{content_name:'JR INDEX',content_category:'thank_you',lp_variant:'thanks'});fbq('track','ViewContent',{content_name:'JR INDEX · thanks',content_category:'thank_you',content_ids:['jr-index-thanks'],lp_variant:'thanks'});
-fbq('track','Lead');
+
+// V15.10: init com Advanced Matching (Meta faz hash SHA-256 automático antes de enviar)
+var __fbAm = {};
+if (__jrEmail) __fbAm.em = __jrEmail.toLowerCase().trim();
+if (__jrTel)   __fbAm.ph = __jrTel.replace(/\D/g,'');
+if (__jrNome)  __fbAm.fn = __jrNome.split(' ')[0].toLowerCase().trim();
+fbq('init','410136588274309', __fbAm);
+
+fbq('track','PageView',{content_name:'JR INDEX',content_category:'thank_you',lp_variant:'thanks'});
+fbq('track','ViewContent',{content_name:'JR INDEX · thanks',content_category:'thank_you',content_ids:['jr-index-thanks'],lp_variant:'thanks'});
+
+// V15.10: Lead com params COMPLETOS + eventID pra DEDUPLICAR com o Lead da LP (Meta entende que é o mesmo lead)
+fbq('track','Lead', {
+  content_name:'JR INDEX',
+  content_category:'capture',
+  content_ids:['jr-index-thanks'],
+  lp_variant:'thanks',
+  value:1.00,
+  currency:'BRL'
+}, {eventID: __jrLeadEid});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=410136588274309&ev=PageView&noscript=1"></noscript>
 <!-- TikTok Pixel Code (lp_variant: thanks) -->
 <script>
 !function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 ttq.load('D7S3AVJC77U9UIR3KDMG');
+
+// V15.10: identify com email/phone pra Advanced Matching no TikTok
+if (__jrEmail || __jrTel) {
+  try { ttq.identify({email: __jrEmail || undefined, phone_number: (__jrTel ? '+55'+__jrTel.replace(/\D/g,'') : undefined)}); } catch(e){}
+}
+
 ttq.page();
-ttq.track('ViewContent',{content_id:'jr-index-thanks',content_name:'JR INDEX · obrigado',content_category:'thanks',content_type:'product',value:1.00,currency:'BRL'});
-ttq.track('CompleteRegistration',{content_id:'jr-index-thanks',content_name:'JR INDEX',content_category:'capture',value:1.00,currency:'BRL'});
+ttq.track('ViewContent',{content_id:'jr-index-thanks',content_name:'JR INDEX · obrigado',content_category:'thanks',content_type:'product',value:1.00,currency:'BRL'}, {event_id: __jrLeadEid});
+ttq.track('CompleteRegistration',{content_id:'jr-index-thanks',content_name:'JR INDEX',content_category:'capture',value:1.00,currency:'BRL'}, {event_id: __jrLeadEid});
 }(window,document,'ttq');
 </script>
 <!-- End TikTok Pixel Code -->
@@ -460,7 +493,7 @@ ttq.track('CompleteRegistration',{content_id:'jr-index-thanks',content_name:'JR 
       </div>
       <div class="sc-content">
         <p class="sc-body">
-          Ativa as notificações do <strong>@jovemricotrader2</strong>.
+          Ativa as notificações do <strong>@jovemrico.ibov</strong>.
           Conteúdo exclusivo e avisos do lançamento vão sair por lá primeiro.
         </p>
         <div class="phone-row">
@@ -477,7 +510,7 @@ ttq.track('CompleteRegistration',{content_id:'jr-index-thanks',content_name:'JR 
                 </div>
                 <div style="flex:1;min-width:0">
                   <div class="ig-name">Jovem Rico Trader</div>
-                  <div class="ig-handle">@jovemricotrader2</div>
+                  <div class="ig-handle">@jovemrico.ibov</div>
                 </div>
                 <button class="ig-follow-btn" id="ig-btn" onclick="igFollow()">Seguir</button>
               </div>
@@ -498,12 +531,12 @@ ttq.track('CompleteRegistration',{content_id:'jr-index-thanks',content_name:'JR 
             </div>
           </div>
           <div class="phone-steps">
-            <div class="ps-row"><span class="psn">1</span><span>Acesse <strong>@jovemricotrader2</strong> e clique em <strong>Seguir</strong></span></div>
+            <div class="ps-row"><span class="psn">1</span><span>Acesse <strong>@jovemrico.ibov</strong> e clique em <strong>Seguir</strong></span></div>
             <div class="ps-row"><span class="psn">2</span><span>Clica no <strong>sino 🔔</strong> e ativa <strong>"Publicações"</strong></span></div>
             <div class="ps-row"><span class="psn">3</span><span>Pronto — você vê os avisos antes de todo mundo</span></div>
           </div>
         </div>
-        <a href="https://www.instagram.com/jovemricotrader2" target="_blank" rel="noopener noreferrer"
+        <a href="https://www.instagram.com/jovemrico.ibov" target="_blank" rel="noopener noreferrer"
           style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
             margin-bottom:10px;padding:clamp(12px,1.8vh,16px);
             background:linear-gradient(135deg,var(--ig1),var(--ig2),var(--ig3));
@@ -513,7 +546,7 @@ ttq.track('CompleteRegistration',{content_id:'jr-index-thanks',content_name:'JR 
             box-shadow:0 6px 22px rgba(221,42,123,.3);transition:transform .15s"
           onmouseover="this.style.transform='translateY(-2px)'"
           onmouseout="this.style.transform='translateY(0)'">
-          📸 ABRIR INSTAGRAM — @jovemricotrader2
+          📸 ABRIR INSTAGRAM — @jovemrico.ibov
         </a>
         <button class="confirm-btn cb-ig" onclick="completeStep(2)">
           ✅ JÁ SEGUI E ATIVEI AS NOTIFICAÇÕES
@@ -568,8 +601,8 @@ ttq.track('CompleteRegistration',{content_id:'jr-index-thanks',content_name:'JR 
               <p class="launch-p">Fique de olho no <strong>grupo e no e-mail</strong>. No dia você recebe as instruções completas para ativar seu JR INDEX.</p>
             </div>
             <div class="launch-cal">
-              <div class="launch-cal-d">01</div>
-              <div class="launch-cal-m">ABR · 2026</div>
+              <div class="launch-cal-d">13</div>
+              <div class="launch-cal-m">MAI · 2026</div>
               <div class="cd-ob" id="cd-ob">—</div>
             </div>
           </div>

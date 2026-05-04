@@ -302,9 +302,16 @@ window.submitForm = function(e){
   _submitting = true;
   document.getElementById('mainBtn').textContent = 'Processando solicitação...';
 
-  try { sessionStorage.setItem('jr_nome', nome); sessionStorage.setItem('jr_tel', telefone.replace(/\D/g,'')); } catch(e){}
-  try { if (window.fbq) fbq('track','Lead',{content_name:'JR INDEX',content_category:'capture',content_ids:['jr-index-v9'],lp_variant:'v9',value:1.00,currency:'BRL'}); } catch(e){}
-  try { if (window.ttq) ttq.track('SubmitForm',{content_id:'jr-index-v9',content_name:'JR INDEX',content_category:'capture',content_type:'product',value:1.00,currency:'BRL',lp_variant:'v9'}); } catch(e){}
+  // V15.10: event_id único pra deduplicar Lead entre LP e obrigado
+  var __jrEid = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2,10);
+  try {
+    sessionStorage.setItem('jr_lead_eid', __jrEid);
+    sessionStorage.setItem('jr_email', email);
+    sessionStorage.setItem('jr_nome', nome);
+    sessionStorage.setItem('jr_tel', telefone.replace(/\D/g,''));
+  } catch(e){}
+  try { if (window.fbq) fbq('track','Lead',{content_name:'JR INDEX',content_category:'capture',content_ids:['jr-index-v9'],lp_variant:'v9',value:1.00,currency:'BRL'}, {eventID: __jrEid}); } catch(e){}
+  try { if (window.ttq) ttq.track('SubmitForm',{content_id:'jr-index-v9',content_name:'JR INDEX',content_category:'capture',content_type:'product',value:1.00,currency:'BRL',lp_variant:'v9'}, {event_id: __jrEid}); } catch(e){}
   try { if (window.gtag) gtag('event','generate_lead',{event_category:'capture'}); } catch(e){}
 
   fetch('/lead', {
