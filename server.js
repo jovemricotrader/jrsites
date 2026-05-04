@@ -527,10 +527,51 @@ function isEmailValido(e) {
   if (!e || e.length > 200) return false;
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
 }
+// V15.13 — Normalização DEFENSIVA de telefone BR (espelha a do Quartel)
+// Lida com: DDI 55 ausente/duplicado, formatação variada, lei do 9º dígito,
+// DDDs inválidos, números repetidos. Retorna string normalizada (12 ou 13 dígitos)
+// ou '' se inválido.
+function normTelefoneBR(p) {
+  let t = String(p || '').replace(/\D/g, '');
+  if (!t) return '';
+  t = t.replace(/^0+/, ''); // strip 0 inicial
+  if (!t) return '';
+  if (t.length > 15) t = t.slice(0, 15);
+
+  // DDI duplicado: '5555...'
+  if (t.length >= 14 && t.startsWith('5555')) {
+    const c = t.slice(2);
+    const d = parseInt(c.slice(2,4),10);
+    if (d>=11 && d<=99 && (c.length===12 || c.length===13)) t = c;
+  }
+
+  // Adiciona DDI 55 se faltar
+  if (!t.startsWith('55')) {
+    if (t.length===10 || t.length===11) {
+      const d = parseInt(t.slice(0,2),10);
+      if (d>=11 && d<=99) t = '55'+t; else return '';
+    } else return '';
+  }
+
+  const sd = t.slice(2);
+  if (sd.length<10 || sd.length>11) return '';
+  const ddd = parseInt(sd.slice(0,2),10);
+  if (ddd<11 || ddd>99) return '';
+  const DDD_INV = new Set([20,23,25,26,29,30,36,39,40,50,52,56,57,58,59,60,70,72,76,78,80,90]);
+  if (DDD_INV.has(ddd)) return '';
+
+  let n = sd.slice(2);
+  if (/^(\d)\1+$/.test(n) && n.length>=8 && sd[0]===sd[1] && sd[0]===n[0]) return ''; // lixo tipo 9999999999
+  if (n.length===8 && /^[6-9]/.test(n)) n = '9'+n; // adiciona o 9º dígito
+  if (n.length!==8 && n.length!==9) return '';
+  if (n.length===9 && n[0]!=='9') return '';
+  if (n.length===8 && !/^[2-5]/.test(n)) return '';
+  if (/^0+$/.test(n)) return ''; // só zeros
+  return '55'+sd.slice(0,2)+n;
+}
 function isTelefoneValido(t) {
-  if (!t) return false;
-  const digits = t.replace(/\D/g, '');
-  return digits.length >= 10 && digits.length <= 15;
+  const norm = normTelefoneBR(t);
+  return norm.length === 12 || norm.length === 13;
 }
 
 // V15: Detecta padrões de spam/bot no nome
@@ -622,7 +663,7 @@ app.post('/lead', (req, res) => {
     return res.status(429).json({ ok: false, error: 'duplicado' });
   }
 
-  notifyQuartel(nome, emailOk ? email : '', telOk ? telefone : '', abVisitor, abSlug, lpVariant, utm);
+  notifyQuartel(nome, emailOk ? email : '', telOk ? normTelefoneBR(telefone) : '', abVisitor, abSlug, lpVariant, utm);
   if (abVisitor && abSlug) trackConversao(abSlug, abVisitor);
   res.json({ ok: true });
 });
