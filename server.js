@@ -98,7 +98,10 @@ function safeUrl(u) {
 
 // Notifica Quartel quando lead novo entra (fire-and-forget)
 function notifyQuartel(nome, email, telefone, abVisitor, abSlug, lpVariant, utm) {
-  if (!QUARTEL_URL) return;
+  if (!QUARTEL_URL) {
+    console.log('[QUARTEL] notifyQuartel SKIPPED: QUARTEL_URL não configurado no Railway');
+    return;
+  }
   try {
     // V15.7: passa lp_variant + UTM (pra A/B comparar e segmentar no Quartel)
     const body = JSON.stringify({
@@ -119,16 +122,37 @@ function notifyQuartel(nome, email, telefone, abVisitor, abSlug, lpVariant, utm)
       'Content-Type': 'application/json',
       'Content-Length': Buffer.byteLength(body)
     };
-    if (process.env.WEBHOOK_SECRET) headers['x-webhook-secret'] = process.env.WEBHOOK_SECRET;
+    // V15.11 FIX: aceita os 2 nomes de env (Quartel V43 usa LEADLOVERS_WEBHOOK_SECRET)
+    const secret = process.env.LEADLOVERS_WEBHOOK_SECRET || process.env.WEBHOOK_SECRET || '';
+    if (secret) headers['x-webhook-secret'] = secret;
+
+    // V15.11 FIX: log diagnóstico pra ver no Railway o que tá rolando
+    if (!secret) {
+      console.warn('[QUARTEL] WARN: nenhum secret configurado (LEADLOVERS_WEBHOOK_SECRET ou WEBHOOK_SECRET) — Quartel vai rejeitar com 401');
+    }
+
     const r = lib.request(
       { hostname: u.hostname, port: u.port || (u.protocol==='https:'?443:80),
-        path: u.pathname, method: 'POST', headers },
-      s => { s.on('data', () => {}); s.on('end', () => {}); }
+        // V15.11 FIX CRÍTICO: u.pathname strippa o query string. PRECISA u.pathname + u.search
+        path: u.pathname + u.search, method: 'POST', headers },
+      s => {
+        let chunks = '';
+        s.on('data', d => { chunks += d.toString(); });
+        s.on('end', () => {
+          if (s.statusCode >= 200 && s.statusCode < 300) {
+            console.log(`[QUARTEL] OK ${s.statusCode}: ${chunks.slice(0,200)}`);
+          } else {
+            console.error(`[QUARTEL] FAIL ${s.statusCode}: ${chunks.slice(0,200)}`);
+          }
+        });
+      }
     );
-    r.on('error', () => {});
-    r.setTimeout(5000, () => r.destroy());
+    r.on('error', e => console.error('[QUARTEL] HTTP ERR:', e.message));
+    r.setTimeout(5000, () => { console.error('[QUARTEL] TIMEOUT 5s'); r.destroy(); });
     r.write(body); r.end();
-  } catch {}
+  } catch (e) {
+    console.error('[QUARTEL] notifyQuartel exception:', e.message);
+  }
 }
 
 // V8: Marca conversão direta no A/B LP (chamado pelo /lead)
