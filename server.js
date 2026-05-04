@@ -116,7 +116,11 @@ function notifyQuartel(nome, email, telefone, abVisitor, abSlug, lpVariant, utm)
     });
     // V15.10 FIX: ?disparar=1 obriga o Quartel a agendar a sequência automática
     // (sem isso o lead é criado mas não recebe a 1a msg do Aquecimento JR INDEX)
-    const u = new URL(QUARTEL_URL + '/webhook/leadlovers?disparar=1');
+    // V15.12: passa lancamento_id pra vincular o lead ao lançamento ativo
+    const lancamentoId = (process.env.LANCAMENTO_ID_DEFAULT || '').replace(/[^a-z0-9_-]/gi, '').slice(0, 40);
+    let urlPath = '/webhook/leadlovers?disparar=1';
+    if (lancamentoId) urlPath += '&lancamento_id=' + encodeURIComponent(lancamentoId);
+    const u = new URL(QUARTEL_URL + urlPath);
     const lib = u.protocol === 'https:' ? require('https') : require('http');
     const headers = {
       'Content-Type': 'application/json',
