@@ -97,10 +97,20 @@ function safeUrl(u) {
 }
 
 // Notifica Quartel quando lead novo entra (fire-and-forget)
-function notifyQuartel(nome, email, telefone, abVisitor, abSlug) {
+function notifyQuartel(nome, email, telefone, abVisitor, abSlug, lpVariant, utm) {
   if (!QUARTEL_URL) return;
   try {
-    const body = JSON.stringify({ nome, email, telefone, fonte: 'leadlovers', ab_visitor: abVisitor, ab_slug: abSlug });
+    // V15.7: passa lp_variant + UTM (pra A/B comparar e segmentar no Quartel)
+    const body = JSON.stringify({
+      nome, email, telefone,
+      fonte: 'leadlovers',
+      ab_visitor: abVisitor,
+      ab_slug: abSlug,
+      lp_variant: lpVariant || '',
+      utm_source: utm?.source || '',
+      utm_campaign: utm?.campaign || '',
+      utm_medium: utm?.medium || ''
+    });
     const u = new URL(QUARTEL_URL + '/webhook/leadlovers');
     const lib = u.protocol === 'https:' ? require('https') : require('http');
     const headers = {
@@ -547,6 +557,13 @@ app.post('/lead', (req, res) => {
   const telefone = String(b.telefone || '').slice(0, 30);
   const abVisitor = String(b.ab_visitor || '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 64);
   const abSlug = String(b.ab_slug || '').replace(/[^a-z0-9_-]/gi,'').slice(0, 40);
+  // V15.7: lp_variant + UTMs pro Quartel categorizar
+  const lpVariant = String(b.lp_variant || '').replace(/[^a-z0-9_-]/gi,'').slice(0, 20);
+  const utm = {
+    source:   String(b.utm_source   || '').replace(/[^a-z0-9_.-]/gi,'').slice(0, 40),
+    campaign: String(b.utm_campaign || '').replace(/[^a-z0-9_.-]/gi,'').slice(0, 60),
+    medium:   String(b.utm_medium   || '').replace(/[^a-z0-9_.-]/gi,'').slice(0, 40),
+  };
 
   // V15: Valida nome
   if (isNomeSuspeito(nome)) {
@@ -575,7 +592,7 @@ app.post('/lead', (req, res) => {
     return res.status(429).json({ ok: false, error: 'duplicado' });
   }
 
-  notifyQuartel(nome, emailOk ? email : '', telOk ? telefone : '', abVisitor, abSlug);
+  notifyQuartel(nome, emailOk ? email : '', telOk ? telefone : '', abVisitor, abSlug, lpVariant, utm);
   if (abVisitor && abSlug) trackConversao(abSlug, abVisitor);
   res.json({ ok: true });
 });

@@ -17,7 +17,7 @@
 <!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','410136588274309');fbq('track','PageView');fbq('track','ViewContent');
+fbq('init','410136588274309');fbq('track','PageView',{content_name:'JR INDEX',content_category:'capture',lp_variant:'v1'});fbq('track','ViewContent',{content_name:'JR INDEX · v1',content_category:'capture',content_ids:['jr-index-v1'],lp_variant:'v1'});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=410136588274309&ev=PageView&noscript=1"></noscript>
 <link rel="preload" href="/foto.png" as="image">
@@ -432,7 +432,7 @@ document.addEventListener('visibilitychange',function(){
       sessionStorage.setItem('jr_tel', telefone.replace(/\D/g,''));
     } catch(e){}
     // V34: Meta Pixel Lead event + TikTok/GA
-    try { if (window.fbq) fbq('track','Lead',{content_name:'JR INDEX'}); } catch(e){}
+    try { if (window.fbq) fbq('track','Lead',{content_name:'JR INDEX',content_category:'capture',content_ids:['jr-index-v1'],lp_variant:'v1',value:1.00,currency:'BRL'}); } catch(e){}
     try { if (window.ttq) ttq.track('SubmitForm'); } catch(e){}
     try { if (window.gtag) gtag('event','generate_lead',{event_category:'capture'}); } catch(e){}
 
@@ -443,7 +443,11 @@ document.addEventListener('visibilitychange',function(){
       body: JSON.stringify({
         nome, email, telefone,
         ab_visitor: window.AB_VISITOR || '',
-        ab_slug: window.AB_SLUG || ''
+        ab_slug: window.AB_SLUG || '',
+        lp_variant: 'v1',
+        utm_source: (new URLSearchParams(location.search)).get('utm_source') || '',
+        utm_campaign: (new URLSearchParams(location.search)).get('utm_campaign') || '',
+        utm_medium: (new URLSearchParams(location.search)).get('utm_medium') || ''
       }),
       keepalive: true
     }).catch(function(){});

@@ -342,9 +342,7 @@ footer p{font-size:11px;color:var(--w3);line-height:1.85;font-family:var(--mono)
 <!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','410136588274309');
-fbq('track','PageView');
-fbq('track','ViewContent');
+fbq('init','410136588274309');fbq('track','PageView',{content_name:'JR INDEX',content_category:'thank_you',lp_variant:'thanks'});fbq('track','ViewContent',{content_name:'JR INDEX · thanks',content_category:'thank_you',content_ids:['jr-index-thanks'],lp_variant:'thanks'});
 fbq('track','Lead');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=410136588274309&ev=PageView&noscript=1"></noscript>
@@ -635,8 +633,8 @@ function completeStep(n) {
 
     // ── Facebook Pixel — evento "EntrarGrupo" (otimização de campanha)
     if (typeof fbq === 'function') {
-      fbq('trackCustom', 'EntrarGrupo');
-      fbq('track', 'CompleteRegistration');
+      fbq('trackCustom','EntrarGrupo',{lp_variant:'thanks',content_name:'JR INDEX'});
+      fbq('track','CompleteRegistration',{content_name:'JR INDEX',content_ids:['jr-index-grupo'],lp_variant:'thanks',value:5.00,currency:'BRL'});
     }
 
     // ── Zapy — dispara evento de engajamento (grupo) se tiver webhook configurado
